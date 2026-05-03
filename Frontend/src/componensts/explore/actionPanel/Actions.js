@@ -20,13 +20,6 @@ const actions = [
     btn_text: "Apply",
     icon: 'Group'
   },
-  {
-    id: "clean",
-    name: "Clean",
-    text: "Handle missing values",
-    btn_text: "Fix",
-    icon: 'Broom'
-  },
   
   {
     id: "visualize",

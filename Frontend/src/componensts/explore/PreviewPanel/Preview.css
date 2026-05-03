@@ -1,8 +1,8 @@
 .preview-box {
   width: 100%;
   color: #00aaff;
-  max-height: 520px;
-
+  /* max-height: 520px; */
+    min-height: 250px;
   border-radius: 16px;
 
   /* premium glass effect */
@@ -23,18 +23,18 @@
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 }
 
-/* TABLE WRAPPER */
+
 .table-wrapper {
   flex: 1;
   overflow: auto;
 
   border-radius: 12px;
 
-  /* important for sticky header clipping fix */
+ 
   position: relative;
 }
 
-/* TABLE */
+
 .preview-box table {
   width: max-content;
   min-width: 100%;
@@ -46,7 +46,7 @@
   color: #e6f1ff;
 }
 
-/* HEADER (FIXED + STICKY) */
+
 .preview-box th {
   background: linear-gradient(
     180deg,
@@ -66,7 +66,7 @@
   border-bottom: 1px solid rgba(0, 170, 255, 0.25);
 }
 
-/* CELLS */
+
 .preview-box th,
 .preview-box td {
   padding: 12px 14px;
@@ -76,12 +76,12 @@
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* ROW HOVER (premium feel) */
+
 .preview-box tr:hover td {
   background: rgba(0, 170, 255, 0.06);
 }
 
-/* SCROLLBAR (clean + modern) */
+
 .table-wrapper::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -100,7 +100,7 @@
   background: transparent;
 }
 
-/* IMAGE GRID */
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -140,7 +140,7 @@
   transform: scale(1.08);
 }
 
-/* TEXT PREVIEW */
+
 .preview-box pre {
   color: #d6e6ff;
   font-size: 13px;

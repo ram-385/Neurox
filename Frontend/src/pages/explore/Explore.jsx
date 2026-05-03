@@ -9,28 +9,18 @@ import OperationPanel from "../../componensts/explore/operationPanel/OperationPa
 import "./Explore.css";
 
 function Explore() {
-
-  // DATASET INFO (STATIC HEADER)
-
-  const dataset = {
-    name: "file.csv",
-    rows: 0,
-    columns: 0,
-    size: "unknown"
-  };
-
-
+  
   // Global State
-
   const [datasetId, setDatasetId] = useState(null);
   const [data, setData] = useState([]);           // table preview
   const [columns, setColumns] = useState([]);     // column list
   const [stats, setStats] = useState(null);       // stat result
   const [analysisConfig, setAnalysisConfig] = useState(null);
-
+  const [viewData, setViewData] = useState([])
+  const [view, setView] = useState(false)
+  
 
   // Load from local storage  (after upload)
-
   useEffect(() => {
     const id = localStorage.getItem("dataset_id");
     const preview = localStorage.getItem("Data");
@@ -51,8 +41,76 @@ function Explore() {
   }, []);
 
 
-  // Analysis Handler
 
+
+
+
+ const handleActionPanel = async (config) => {
+  let url = "";
+  let body = { dataset_id: datasetId };
+
+  // Filter
+  if (config.type === "filter") {
+    url = "/filter";
+    body.column = config.column;
+    body.operator = config.operator;
+    body.value = config.value;
+  }
+
+  // Sort
+  else if (config.type === "sort") {
+    url = "/sort";
+    body.column = config.column;
+    body.order = config.order || "asc";
+  }
+
+  // Group By
+  else if (config.type === "group") {
+    url = "/groupby";
+    body.group_column = config.group_column;
+    body.agg_column = config.agg_column;
+    body.operation = config.operation;
+  }
+
+  if (!url) return;
+
+  try {
+    const res = await fetch(`http://127.0.0.1:8000/api${url}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    const result = await res.json();
+
+    if (result.error) return result.error;
+
+    
+    if (result.data) {
+      setViewData({
+        type: "table",
+        data: result.data
+      });
+      setView(true)
+    }
+
+    return result.message;
+
+  } catch (err) {
+    console.error("ActionPanel error:", err);
+    return "Server error";
+  }
+};
+
+
+
+
+
+
+
+
+
+  // Analysis Handler
  const handleAnalyze = async (config) => {
   const { column, operation, category } = config;
    setAnalysisConfig(config);
@@ -141,12 +199,12 @@ function Explore() {
 
     
     if (category === "view" && result.data) {
-      setData({
+      setViewData({
         type: "table",
         data: result.data,
       });
-
-      return result.data;  
+      setView(true);
+      return 'Result will appear in the Table';  
     }
 
   } catch (err) {
@@ -155,11 +213,8 @@ function Explore() {
   }
 };
 
-console.log(data)
-console.log(columns)
-
   
-  const handleAction = async (action, column) => {
+ const handleAction = async (action, column) => {
   try {
     let url = "";
     let body = { dataset_id: datasetId };
@@ -191,13 +246,14 @@ console.log(columns)
         type: "table",
         data: result.data   
       });
-
+      setView(false)
       // sync localStorage also
       localStorage.setItem("Data", JSON.stringify(result.data));
     }
 
     if (result.columns) {
-  setColumns(prev => {
+      setView(false)
+      setColumns(prev => {
     console.log("NEW COLUMNS:", result.columns);
     return result.columns;
   });
@@ -210,11 +266,11 @@ console.log(columns)
   }
 };
 
-
+const activeData = (view)?viewData:data
   return (
     <div>
       
-      <ActionPanel />
+      <ActionPanel handleAction={handleActionPanel} columns={columns}/>
 
       <div className="explore-layout">
 
@@ -227,7 +283,7 @@ console.log(columns)
         <div className="center-panel">
 
           
-          <Preview Data={data} />
+          <Preview Data={activeData} />
 
          
           <div className="analysis-box">

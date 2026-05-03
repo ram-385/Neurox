@@ -1,25 +1,50 @@
 import React, { useState } from "react";
 import ActionCard from "./ActionCard";
-import actions from "./Actions";
 import './ActionPanel.css'
+import actions from "./Actions";
+import "./ActionPanel.css";
 
-function ActionPanel() {
+import FilterBox from "./FilterBox";
+import SortBox from "./SortBox";
+import GroupBox from "./GroupBox";
+
+function ActionPanel({ handleAction, columns }) {
+
   const [activeAction, setActiveAction] = useState(null);
 
-  const handleAction = (actionId) => {
-    setActiveAction(actionId);
-    console.log("Selected action:", actionId);
+  const handleClick = (id) => {
+    setActiveAction(id);
   };
 
   return (
     <div className="action-panel">
-      {actions.map((action) => (
-        <ActionCard
-          key={action.id}
-          action={action}
-          onClick={handleAction}
-        />
-      ))}
+
+        {actions.map((action) => (
+          <ActionCard
+            key={action.id}
+            action={action}
+            isActive={activeAction === action.id}
+            onClick={handleClick}
+          />
+        ))}
+      
+
+      
+      <div className="action-form">
+
+        {activeAction === "filter" && (
+          <FilterBox columns={columns} onApply={handleAction} />
+        )}
+
+        {activeAction === "sort" && (
+          <SortBox columns={columns} onApply={handleAction} />
+        )}
+
+        {activeAction === "group" && (
+          <GroupBox columns={columns} onApply={handleAction} />
+        )}
+
+      </div>
     </div>
   );
 }

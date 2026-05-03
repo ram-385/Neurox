@@ -233,9 +233,19 @@ function Chart({ config, data }) {
     }
   };
 
+
+
+const isNumerical = (type) => {
+  if (!type) return false;
+  const t = type.toLowerCase();
+  return t.includes("int") || t.includes("float") || t.includes("double");
+};
+
+
+
   return (
     <div className="chart-container" style={{ marginTop: "20px" }}>
-      {type === "numerical" ? renderNumerical() : renderCategorical()}
+     {isNumerical(type) ? renderNumerical() : renderCategorical()}
     </div>
   );
 }

@@ -21,10 +21,13 @@ function SelectionBox({ columns = [], Data = [], onAnalyze }) {
     setOperation("");
   };
 
-  const ops =
-    columnType === "numerical"
-      ? numericalGraphOps
-      : categoricalGraphOps;
+  const isNumerical = (type) => {
+  return ["int", "float", "double"].some(t => type.toLowerCase().includes(t));
+};
+
+const ops = isNumerical(columnType)
+  ? numericalGraphOps
+  : categoricalGraphOps;
 
   return (
     <div className="selection-box">
@@ -64,12 +67,12 @@ function SelectionBox({ columns = [], Data = [], onAnalyze }) {
           }
 
           const values = Data.map(row => row[selectedColumn]);
-
-          onAnalyze?.({
+                  onAnalyze?.({
             column: selectedColumn,
             operation,
             type: columnType,
-            values,   // 🔥 THIS IS IMPORTANT
+            category: "analysis",  
+            values,
           });
         }}
       >

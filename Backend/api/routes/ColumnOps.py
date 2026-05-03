@@ -6,8 +6,7 @@ import pandas as pd
 
 router = APIRouter()
 
-
-
+#Schema
 class DeleteColumnRequest(BaseModel):
     dataset_id: str
     column_name: str
@@ -40,8 +39,24 @@ class PreviewRequest(BaseModel):
     dataset_id: str
     operation: str
 
+class FilterRequest(BaseModel):
+    dataset_id: str
+    column: str
+    operator: str
+    value: str
 
 
+class SortRequest(BaseModel):
+    dataset_id: str
+    column: str
+    order: str = "asc"   # asc / desc
+
+
+class GroupByRequest(BaseModel):
+    dataset_id: str
+    group_column: str
+    agg_column: str
+    operation: str
 
 def format_response(df):
     return {
@@ -55,11 +70,7 @@ def format_response(df):
         "data": df.replace({np.nan: None}).to_dict(orient="records")
     }
 
-
-
-# DELETE COLUMN
-
-
+# Delete Column
 @router.post('/delete_column')
 async def delete_column(req: DeleteColumnRequest):
 
@@ -79,9 +90,7 @@ async def delete_column(req: DeleteColumnRequest):
         **format_response(df)
     }
 
-
-
-
+# Rename column
 @router.post("/rename-column")
 async def rename_column(req: RenameColumnRequest):
 
@@ -104,11 +113,7 @@ async def rename_column(req: RenameColumnRequest):
         **format_response(df)
     }
 
-
-
-# DROP NA
-
-
+# Drop rows with missing values
 @router.post("/drop-na")
 async def drop_na(req: ColumnRequest):
 
@@ -124,12 +129,12 @@ async def drop_na(req: ColumnRequest):
     update_dataset(req.dataset_id, df)
 
     return {
-        "message": "NA rows removed",
+        "message": "Rows with null values are removed ",
         **format_response(df)
     }
 
 
-
+# Remove Duplicate Rows 
 @router.post("/delete-duplicates-column")
 async def delete_duplicates_column(req: ColumnRequest):
 
@@ -145,16 +150,11 @@ async def delete_duplicates_column(req: ColumnRequest):
     update_dataset(req.dataset_id, df)
 
     return {
-        "message": "Duplicates removed",
+        "message": "Rows with duplicate values are removed",
         **format_response(df)
     }
 
-
-
-# FILL NA
-
-
-
+# Fill missing Values
 @router.post("/fill-na")
 async def fill_na(req: FillNARequest):
 
@@ -198,9 +198,7 @@ async def fill_na(req: FillNARequest):
 
 
 
-# COLUMN STATS
-
-
+# Statistics of the column
 @router.post("/column-stats")
 async def column_stats(req: StatsRequest):
 
@@ -246,7 +244,7 @@ async def column_stats(req: StatsRequest):
         else:
             return {"error": "Invalid operation"}
 
-        # NaN fix
+       
         if isinstance(result, float) and np.isnan(result):
             result = None
         if isinstance(result, (np.integer, np.int64)):
@@ -263,7 +261,7 @@ async def column_stats(req: StatsRequest):
         return {"error": str(e)}
 
 
-
+#Preview Operation
 @router.post("/preview-operation")
 async def preview_operation(req: PreviewRequest):
 
@@ -295,3 +293,129 @@ async def preview_operation(req: PreviewRequest):
         ],
         "data": result.replace({np.nan: None}).to_dict(orient="records")
     }
+
+# Filter Dataset
+@router.post("/filter")
+async def filter_data(req: FilterRequest):
+
+    df = get_dataset(req.dataset_id)
+
+    if df is None:
+        return {"error": "Dataset not found"}
+
+    if req.column not in df.columns:
+        return {"error": "Column not found"}
+
+    try:
+        col = df[req.column]
+
+        
+        if pd.api.types.is_numeric_dtype(col):
+            value = float(req.value)
+        else:
+            value = req.value
+
+        if req.operator == "==":
+            result = df[col == value]
+
+        elif req.operator == "!=":
+            result = df[col != value]
+
+        elif req.operator == ">":
+            result = df[col > value]
+
+        elif req.operator == "<":
+            result = df[col < value]
+
+        elif req.operator == ">=":
+            result = df[col >= value]
+
+        elif req.operator == "<=":
+            result = df[col <= value]
+
+        else:
+            return {"error": "Invalid operator"}
+
+
+        return {
+            "message": "Filter applied",
+            **format_response(result)
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+    
+
+ # sort dataset   
+
+# Sort dataset    
+@router.post("/sort")
+async def sort_data(req: SortRequest):
+
+    df = get_dataset(req.dataset_id)
+
+    if df is None:
+        return {"error": "Dataset not found"}
+
+    if req.column not in df.columns:
+        return {"error": "Column not found"}
+
+    try:
+        ascending = True if req.order == "asc" else False
+
+        result = df.sort_values(by=req.column, ascending=ascending)
+
+        update_dataset(req.dataset_id, result)
+
+        return {
+            "message": "Sorted successfully",
+            **format_response(result)
+        }
+
+    except Exception as e:
+        return {"error": str(e)}
+    
+# Group dataset
+@router.post("/groupby")
+async def groupby_data(req: GroupByRequest):
+
+    df = get_dataset(req.dataset_id)
+
+    if df is None:
+        return {"error": "Dataset not found"}
+
+    if req.group_column not in df.columns or req.agg_column not in df.columns:
+        return {"error": "Column not found"}
+
+    try:
+        grouped = df.groupby(req.group_column)[req.agg_column]
+
+        if req.operation == "mean":
+            result = grouped.mean()
+
+        elif req.operation == "sum":
+            result = grouped.sum()
+
+        elif req.operation == "count":
+            result = grouped.count()
+
+        elif req.operation == "max":
+            result = grouped.max()
+
+        elif req.operation == "min":
+            result = grouped.min()
+
+        else:
+            return {"error": "Invalid operation"}
+
+        result = result.reset_index()
+
+        update_dataset(req.dataset_id, result)
+
+        return {
+            "message": "GroupBy applied",
+            **format_response(result)
+        }
+
+    except Exception as e:
+        return {"error": str(e)}

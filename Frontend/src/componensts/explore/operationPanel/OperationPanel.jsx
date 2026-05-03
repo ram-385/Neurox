@@ -65,7 +65,7 @@ function OperationPanel({ columns = [], onAnalyze }) {
     <div className="operation-panel">
       <h2 className="operation-panel-title">Operation Panel</h2>
 
-      {/* CATEGORY */}
+      {/* Category */}
       <select
         className="operation-panel-select"
         value={category}
@@ -80,21 +80,23 @@ function OperationPanel({ columns = [], onAnalyze }) {
         <option value="view">View</option>
       </select>
 
-      {/* COLUMN */}
-      <select
-        className="operation-panel-select"
-        value={selectedColumn}
-        onChange={handleColumnChange}
-      >
-        <option value="">Select Column</option>
-        {columns.map((col, i) => (
-          <option key={i} value={col.name}>
-            {col.name}
-          </option>
-        ))}
-      </select>
+      {/* Columns */}
+      {category !== "view" && (
+        <select
+          className="operation-panel-select"
+          value={selectedColumn}
+          onChange={handleColumnChange}
+        >
+          <option value="">Select Column</option>
+          {columns.map((col, i) => (
+            <option key={i} value={col.name}>
+              {col.name}
+            </option>
+          ))}
+        </select>
+      )}
 
-      {/* OPERATION */}
+      {/* Operation */}
       <select
         className="operation-panel-select"
         value={operation}
@@ -116,12 +118,12 @@ function OperationPanel({ columns = [], onAnalyze }) {
         ))}
       </select>
 
-      {/* BUTTON */}
+      {/* Button */}
       <button className="operation-panel-button" onClick={handleApply}>
         Apply
       </button>
 
-      {/* WHAT WILL HAPPEN */}
+      {/* What will happen */}
      
         <div className="op-box">
           <h3>What will happen</h3>
@@ -129,7 +131,7 @@ function OperationPanel({ columns = [], onAnalyze }) {
         </div>
    
 
-      {/* RESULT BOX */}
+      {/* Result Box */}
      
         <div className="result-box">
           <h3>Result</h3>

@@ -1,15 +1,25 @@
-import React from "react";
+import React  from "react";
 import './ActionCard.css'
-import iconMap from "./IconMap";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function ActionCard({ action, onClick }) {
+import {
+  faFilter,
+  faSort,
+  faLayerGroup,
+  faBroom,
+  faCode,
+  faChartBar
+} from "@fortawesome/free-solid-svg-icons";
+import iconMap from "./IconMap";
+function ActionCard({ action, onClick, isActive }) {
   return (
-    <div className="action-box">
+    <div
+      className={`action-box ${isActive ? "active" : ""}`}
+      onClick={() => onClick(action.id)}
+    >
       <div className="action-bar">
         <div className="icon-squre">
-            <FontAwesomeIcon icon={iconMap[action.icon]} />
+          <FontAwesomeIcon icon={iconMap[action.icon]} />
         </div>
 
         <div className="Action">
@@ -18,13 +28,10 @@ function ActionCard({ action, onClick }) {
         </div>
       </div>
 
-      <div className="ActionBtn">
-        <button onClick={() => onClick(action.id)}>
-          {action.btn_text}
-        </button>
-      </div>
+      <button className="action-btn">
+        {action.btn_text}
+      </button>
     </div>
   );
 }
-
-export default ActionCard;
+ export default ActionCard;

@@ -1,0 +1,33 @@
+
+.form-box {
+  background: #111a3a;
+  padding: 16px;
+  border-radius: 12px;
+  width: 240px;
+  border: 1px solid #1f2a4a;
+}
+
+.form-box h3 {
+  color: #00ffaa;
+  margin-bottom: 3px;
+}
+
+.form-box select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 9px;
+  background: #0a0f2c;
+  border: 1px solid #1f2a4a;
+  color: #e6f1ff;
+  border-radius: 6px;
+}
+
+.form-box button {
+  margin-top: 10px;
+  width: 100%;
+  background: #00ffaa;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
