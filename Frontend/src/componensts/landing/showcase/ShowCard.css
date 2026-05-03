@@ -1,0 +1,112 @@
+/* MAIN CARD */
+.card {
+  width: 300px;
+  border-radius: 16px;
+  padding: 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(10, 20, 40, 0.95),
+    rgba(5, 10, 25, 0.95)
+  );
+
+  border: 1px solid rgba(0, 150, 255, 0.2);
+
+  color: #fff;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* HOVER */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.4);
+  border: 1px solid rgba(0, 150, 255, 0.6);
+}
+
+/*  TOP ROW (ICON + TEXT) */
+
+/* .child:first-child {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: inherit;
+} */
+
+
+
+/* FONT AWESOME ICON */
+.card svg {
+  font-size: 18px;
+  color: #00aaff;
+}
+
+/* HEADING */
+.card h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/*  DIVIDER (AFTER TOP ROW) */
+.card > div:first-child::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin-top: 12px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 170, 255, 0.6),
+    transparent
+  );
+}
+
+/* IMAGE CONTAINER */
+.card-img {
+  width: 100%;
+  height: 160px;
+  margin-top: 12px;
+
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* IMAGE */
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /* BLEND EFFECT */
+  opacity: 0.85;
+  mix-blend-mode: screen;
+  transition: 0.3s;
+}
+
+/*  OVERLAY GLOW */
+.card-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(0, 150, 255, 0.1),
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+/* IMAGE HOVER */
+.card:hover .card-img img {
+  opacity: 1;
+  transform: scale(1.05);
+}

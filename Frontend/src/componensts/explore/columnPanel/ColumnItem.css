@@ -1,0 +1,133 @@
+.column-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 12px;
+  border-radius: 12px;
+
+  background: var(--bg-soft);
+  border: 1px solid transparent;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+
+.column-item:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.08),
+    rgba(59, 130, 246, 0.05)
+  );
+
+  border: 1px solid rgba(99, 102, 241, 0.3);
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.15);
+}
+
+
+.column-item.active {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.18),
+    rgba(59, 130, 246, 0.12)
+  );
+
+  border: 1px solid var(--accent);
+
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.4),
+              0 6px 20px rgba(99, 102, 241, 0.25);
+}
+
+
+.column-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.rectangle {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    #3b82f6
+  );
+}
+
+
+.column-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.column-type {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+
+.dots {
+  font-size: 16px;
+  color: var(--text-secondary);
+  opacity: 0.6;
+  transition: 0.2s;
+}
+
+
+.column-item:hover .dots {
+  opacity: 1;
+  color: var(--accent-light);
+}
+
+.dots {
+  position: relative;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  top: 22px;
+  right: 0;
+
+  width: 130px;
+  padding: 6px;
+
+  border-radius: 10px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+
+  z-index: 20;
+}
+
+.menu-item {
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 13px;
+
+  color: var(--text-primary);
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.menu-item:hover {
+  background: var(--bg-hover);
+}
+
+
+.menu-item.delete:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}

@@ -1,0 +1,23 @@
+.chart-container {
+  width: 95%;
+  
+  border: 1px solid #1f2a48;
+  border-radius: 12px;
+background: linear-gradient(
+    145deg,
+    rgba(25, 36, 59, 0.92),
+    rgba(20, 29, 49, 0.97)
+  );
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* Plotly canvas control */
+.chart-container .js-plotly-plot {
+  width: 100% !important;
+}

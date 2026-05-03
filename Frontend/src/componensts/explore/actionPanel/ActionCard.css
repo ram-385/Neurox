@@ -1,0 +1,153 @@
+.action-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 14px;
+  border-radius: 14px;
+
+  /* glass + premium dark */
+  background: linear-gradient(
+    145deg,
+    rgba(40, 54, 84, 0.9),
+    rgba(10, 15, 28, 0.95)
+  );
+
+  /* subtle glow border */
+  border: 1px solid rgba(99, 102, 241, 0.18);
+
+  /* depth */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 8px 20px rgba(0, 0, 0, 0.35);
+
+  backdrop-filter: blur(8px);
+
+  transition: all 0.25s ease;
+}
+
+
+/* hover */
+.action-box:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(99, 102, 241, 0.5);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.5),
+    0 0 18px rgba(99, 102, 241, 0.25);
+}
+
+
+/* top section */
+.action-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+
+/* icon */
+.icon-squre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 10px;
+
+  /* soft glowing bg */
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.2),
+    rgba(79, 70, 229, 0.15)
+  );
+
+  border: 1px solid rgba(99, 102, 241, 0.25);
+
+  box-shadow:
+    inset 0 1px 4px rgba(255, 255, 255, 0.08),
+    0 4px 12px rgba(99, 102, 241, 0.15);
+
+  transition: all 0.25s ease;
+}
+
+.icon-squre:hover {
+  transform: translateY(-2px) scale(1.06);
+
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #4f46e5
+  );
+
+  box-shadow:
+    0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+
+/* text */
+.Action h2 {
+  font-size: 14px;
+  margin: 0;
+  color: #e8ecf8;
+}
+
+.Action p {
+  font-size: 12px;
+  margin: 2px 0 0;
+  color: rgba(180, 190, 210, 0.8);
+}
+
+
+/* button container */
+.ActionBtn {
+  margin-top: 12px;
+}
+
+
+/* button */
+.ActionBtn button {
+  width: 100%;
+  padding: 8px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+
+  font-size: 12px;
+  cursor: pointer;
+
+  /* premium glass button */
+  background: linear-gradient(
+    180deg,
+    rgba(20, 28, 45, 0.9),
+    rgba(10, 15, 28, 0.95)
+  );
+
+  color: #e6eaf5;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 4px 10px rgba(0, 0, 0, 0.3);
+
+  transition: all 0.2s ease;
+}
+
+
+/* hover */
+.ActionBtn button:hover {
+  background: linear-gradient(
+    135deg,
+    #1d4ed8,
+    #6366f1
+  );
+
+  border-color: rgba(99, 102, 241, 0.6);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 10px 22px rgba(99, 102, 241, 0.35);
+}

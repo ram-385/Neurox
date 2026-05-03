@@ -1,0 +1,106 @@
+.UPreview-box {
+    width: 90%;
+   margin:10px,30px,20px,30px;
+   color :#00aaff;
+   max-height: 520px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  
+  border: 1px solid rgba(0, 170, 255, 0.15);
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+
+.table-wrapper {
+  flex: 1;
+  overflow: auto;
+
+  border-radius: 10px;
+}
+
+/* TABLE */
+.UPreview-box table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: #eee;
+}
+
+/* CELLS */
+.UPreview-box th,
+.UPreview-box td {
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* HEADER STICKY */
+.UPreview-box th {
+  background: rgba(0, 170, 255, 0.15);
+  color: #00d4ff;
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+/* SCROLLBAR */
+.table-wrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0, 170, 255, 0.6);
+  border-radius: 10px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+
+  max-height: 480px;
+  overflow-y: auto;
+
+  padding: 10px;
+}
+
+.image-card {
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+.image-card img:hover {
+  transform: scale(1.05);
+}
+
+
+.UPreview-box pre {
+  color: #ddd;
+  font-size: 13px;
+  white-space: pre-wrap;
+}

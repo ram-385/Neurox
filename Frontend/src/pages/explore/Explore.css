@@ -1,0 +1,75 @@
+
+.explore-layout {
+  display: flex;
+  height: 100vh;
+   background: linear-gradient(90deg, #00aaff, #00ffcc);
+   background-clip: text;
+  -webkit-background-clip: text;
+ 
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 15%;
+  min-width: 200px;
+  height: 95%;
+}
+
+/* CENTER PANEL (MAIN 65%) */
+.center-panel {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  height: 95%;
+  margin-left: 10px;
+  
+ 
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  width: 20%;
+  height: 95%;
+ 
+}
+
+
+
+/* ANALYSIS BOX */
+.analysis-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px;
+
+  margin-top: 25px;
+
+   flex-wrap: wrap;
+   background: linear-gradient(
+    145deg,
+    rgba(25, 36, 59, 0.92),
+    rgba(20, 29, 49, 0.97)
+  );
+  border-radius: 12px;
+
+  box-shadow: 0 0 15px rgba(0, 234, 255, 0.08);
+  transition: 0.3s;
+  width: 97%;
+  
+}
+
+
+.analysis-container:hover {
+  box-shadow: 0 0 25px rgba(0, 234, 255, 0.15);
+}
+
+
+@media (max-width: 900px) {
+  .analysis-container {
+    flex-direction: column;
+  }
+} 

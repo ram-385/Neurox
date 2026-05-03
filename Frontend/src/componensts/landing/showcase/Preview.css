@@ -1,0 +1,87 @@
+
+.Preview-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+
+.Preview-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+.Preview-title span {
+  padding: 0 20px;
+  background: linear-gradient(90deg, #00aaff, #00ffcc);
+   background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LINES */
+.Preview-title::before,
+.Preview-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 150, 255, 0.6)
+  );
+}
+
+.Preview-title::after {
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(0, 150, 255, 0.6)
+  );
+}
+
+.Preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 30px;
+
+ 
+  flex-wrap: nowrap;
+
+  overflow-x: auto; 
+  padding-bottom: 10px;
+}
+
+
+.Preview-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.Preview-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 150, 255, 0.4);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .Preview-title {
+    font-size: 28px;
+  }
+
+  .Preview-container {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Preview-title {
+    font-size: 24px;
+  }
+}

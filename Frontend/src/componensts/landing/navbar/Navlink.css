@@ -1,0 +1,65 @@
+/* CARD CONTAINER */
+.nav-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+
+  padding: 10px 25px;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+
+  transition: all 0.3s ease;
+  color: whitesmoke;
+}
+
+
+.nav-card:hover {
+  box-shadow:
+    0 0 10px rgba(13, 110, 253, 0.4),
+    0 0 20px rgba(13, 110, 253, 0.3),
+    0 0 40px rgba(13, 110, 253, 0.2);
+}
+
+/* LINKS */
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+
+  position: relative;
+  transition: 0.3s ease;
+}
+
+
+.nav-link:hover {
+  color: #0d6efd;
+}
+
+
+.nav-link.active {
+  color: #0d6efd;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+
+  width: 0%;
+  height: 2px;
+  background: #0d6efd;
+
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}

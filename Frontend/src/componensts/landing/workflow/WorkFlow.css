@@ -1,0 +1,87 @@
+
+.workflow-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+
+.workflow-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+.workflow-title span {
+  padding: 0 20px;
+  background: linear-gradient(90deg, #00aaff, #00ffcc);
+   background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* LINES */
+.workflow-title::before,
+.workflow-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(0, 150, 255, 0.6)
+  );
+}
+
+.workflow-title::after {
+  background: linear-gradient(
+    to left,
+    transparent,
+    rgba(0, 150, 255, 0.6)
+  );
+}
+
+.workflow-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  gap: 30px;
+
+ 
+  flex-wrap: nowrap;
+
+  overflow-x: auto; 
+  padding-bottom: 10px;
+}
+
+
+.workflow-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.workflow-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 150, 255, 0.4);
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .workflow-title {
+    font-size: 28px;
+  }
+
+  .workflow-container {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .workflow-title {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,47 @@
+/* MAIN BOX */
+.btn-box {
+  width: 200px;
+  padding: 14px 18px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 14px;
+
+  /* 🔥 DARK AI BACKGROUND */
+  background: linear-gradient(
+    135deg,
+    rgba(10, 20, 40, 0.9),
+    rgba(5, 10, 25, 0.9)
+  );
+
+  border: 1px solid rgba(0, 150, 255, 0.2);
+
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.btn-box:hover {
+  transform: translateX(8px);
+
+  border: 1px solid rgba(0, 150, 255, 0.6);
+
+  box-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
+}
+
+/* ARROW */
+.arrow {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+/* ARROW MOVE */
+.btn-box:hover .arrow {
+  transform: translateX(6px);
+}
