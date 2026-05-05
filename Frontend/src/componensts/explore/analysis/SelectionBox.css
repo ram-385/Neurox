@@ -1,7 +1,8 @@
 
 /* Main Box */
 .selection-box {
-  width: 95%;
+  width: 80%;
+  min-height: 250px;
   padding: 10px;
   border-radius: 16px;
 
@@ -13,11 +14,14 @@
   backdrop-filter: blur(12px);
 
   border: 1px solid rgba(0, 170, 255, 0.2);
+  
   display: flex;
- 
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 
+  gap: 12px;
+  
   box-shadow:
     0 0 20px rgba(0, 170, 255, 0.15),
     inset 0 0 10px rgba(0, 170, 255, 0.05);
@@ -45,7 +49,7 @@
 
   border-radius: 8px;
   border: 1px solid rgba(0, 170, 255, 0.3);
-
+  justify-self: flex-start;
   background: rgba(255, 255, 255, 0.05);
   color: #e6f1ff;
 
@@ -74,7 +78,7 @@
 .selection-box button {
   width: 90%;
   padding: 10px;
- 
+   align-self: center;
   border: none;
   border-radius: 10px;
    margin-bottom: 15px;

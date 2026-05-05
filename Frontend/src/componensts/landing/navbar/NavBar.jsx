@@ -7,9 +7,9 @@ import './Navbar.css'
 
 const Navlinks = [
     { label: "Home", path: "/" },
-    { label: "Explore", path: "/Explore" },
     { label: "Upload Dataset", path: "/Upload" },
-    { label: "Documentation", path: "/Documentation" },
+    { label: "Exploration", path: "/Explore" },
+    { label: "Feature Engineering", path: "/FeatureEngineering" },
     {label : 'Workflow',path:'/Workkflow'}
 ]
 const Authlinks = [

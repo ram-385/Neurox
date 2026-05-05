@@ -36,19 +36,31 @@
 
 
 
-/* ANALYSIS BOX */
+.analysis-selection {
+  min-width: 260px;
+  min-height: 320px;
+  border: 2px solid #1f2a48;
+  border-radius: 12px;
+   background: linear-gradient(
+    145deg,
+    rgba(25, 36, 59, 0.92),
+    rgba(20, 29, 49, 0.97)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .analysis-box {
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  gap: 20px;
 
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   padding: 12px;
 
-  margin-top: 25px;
+   margin-top: 20px;
 
-   flex-wrap: wrap;
+   
    background: linear-gradient(
     145deg,
     rgba(25, 36, 59, 0.92),

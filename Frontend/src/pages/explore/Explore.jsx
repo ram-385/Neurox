@@ -40,11 +40,15 @@ function Explore() {
   }
   }, []);
 
+// handlle Plots
+const handlePlots =(config)=>{
+  setAnalysisConfig(config);
+  // For simplicity, we just set the config here.
+  // The Chart component will react to this change and fetch data if needed.
+}
 
 
-
-
-
+// Action Paneld  Handler
  const handleActionPanel = async (config) => {
   let url = "";
   let body = { dataset_id: datasetId };
@@ -102,19 +106,10 @@ function Explore() {
   }
 };
 
-
-
-
-
-
-
-
-
   // Analysis Handler
  const handleAnalyze = async (config) => {
   const { column, operation, category } = config;
-   setAnalysisConfig(config);
-
+  
   let url = "";
   let body = { dataset_id: datasetId };
 
@@ -188,7 +183,7 @@ function Explore() {
         type: "table",
         data: result.data,
       });
-       setAnalysisConfig(config);
+
       setColumns(result.columns);
 
       localStorage.setItem("Data", JSON.stringify(result.data));
@@ -267,50 +262,69 @@ function Explore() {
 };
 
 const activeData = (view)?viewData:data
-  return (
-    <div>
-      
-      <ActionPanel handleAction={handleActionPanel} columns={columns}/>
+ return (
+  <div className="explore-container">
 
-      <div className="explore-layout">
+   
+    <div className="action-panel">
+      <ActionPanel 
+        handleAction={handleActionPanel} 
+        columns={columns}
+      />
+    </div>
+
+   
+    <div className="explore-layout">
+
+      {/* ⬅ LEFT PANEL */}
+      <div className="left-panel">
+        <ColumnPanel 
+          columns={columns} 
+          onAction={handleAction} 
+        />
+      </div>
+
+      
+      <div className="center-panel">
 
        
-        <div className="left-panel">
-          <ColumnPanel columns={columns} onAction={handleAction} />
+        <div className="preview-box">
+          <Preview Data={activeData} />
         </div>
 
-       
-        <div className="center-panel">
+        
+        <div className="analysis-box">
 
-          
-          <Preview Data={activeData} />
+         <div className="analysis-selection">
+           <SelectionBox
+            columns={columns}
+            Data={data.data}
+            onAnalyze={handlePlots}
+          />
+         </div>
 
          
-          <div className="analysis-box">
-
-            <SelectionBox
-              columns={columns}
-              Data={data.data}
-              onAnalyze={handleAnalyze}
-            />
+          <div className="chart-container">
             <Chart
               config={analysisConfig}
               data={data.data}
             />
           </div>
-        </div>
 
-       
-        <div className="right-panel">
-          <OperationPanel
-            columns={columns}
-            onAnalyze={handleAnalyze}
-          />
         </div>
-
       </div>
+
+     
+      <div className="right-panel">
+        <OperationPanel
+          columns={columns}
+          onAnalyze={handleAnalyze}
+        />
+      </div>
+
     </div>
-  );
+  </div>
+);
 }
 
 export default Explore;

@@ -21,7 +21,7 @@ function Features() {
           />
         </NavLink>
 
-        <NavLink to="/Clean" style={{ textDecoration: "none" }}>
+        <NavLink to="/FeatureEngineering" style={{ textDecoration: "none" }}>
           <Card
             img={clean}
             title="Automatic Data Cleaning"

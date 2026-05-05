@@ -1,0 +1,114 @@
+/* Main Box */
+.fselection-box {
+  width: 280px;              
+  min-width: 260px;
+  max-width: 300px;
+
+   background: linear-gradient(
+    145deg,
+    rgba(25, 36, 59, 0.92),
+    rgba(20, 29, 49, 0.97)
+  );
+  backdrop-filter: blur(12px);
+  padding: 16px;
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  
+  flex-shrink: 0;
+
+  /* height control */
+  height: 90%;
+  max-height: 90%;
+
+  /* overflow safe */
+  overflow-y: auto;
+
+  border: 1px solid #222;
+}
+
+/* Title */
+.fselection-box h3 {
+  color: #00ffaa;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+
+.fselection-box select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #222;
+
+  background: #1a1a1a;
+  color: #fff;
+
+  font-size: 14px;
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+
+.fselection-box select:focus {
+  border-color: #00ffaa;
+}
+
+
+.fselection-box button {
+  margin-top: 8px;
+  padding: 10px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #00ffaa;
+  color: #000;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.fselection-box button:hover {
+  opacity: 0.85;
+}
+
+
+.fselection-box::-webkit-scrollbar {
+  width: 6px;
+}
+
+.fselection-box::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+
+
+@media (max-width: 900px) {
+  .fselection-box {
+    width: 100%;
+    max-width: 100%;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    gap: 10px;
+  }
+
+  .fselection-box h3 {
+    width: 100%;
+  }
+
+  .fselection-box select {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .fselection-box button {
+    width: 100%;
+  }
+}

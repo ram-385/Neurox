@@ -33,6 +33,8 @@ const ops = isNumerical(columnType)
     <div className="selection-box">
 
       {/* Column */}
+
+      <div style={{width:'90%'}}>
       <select value={selectedColumn} onChange={handleColumnChange}>
         <option value="">Select Column</option>
 
@@ -57,7 +59,7 @@ const ops = isNumerical(columnType)
           </option>
         ))}
       </select>
-
+</div>
       {/* Button */}
       <button
         onClick={() => {

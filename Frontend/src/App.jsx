@@ -7,6 +7,7 @@ import Upload from "./pages/upload/Upload.jsx";
 
 import Layout from "./layout/layout.jsx";
 import Explore from "./pages/explore/Explore.jsx";
+import FeatureEngineering from "./pages/fEngineering/FeatureEngineering.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/Upload" element={<Upload />} />
          <Route path='/Explore' element={<Explore/>}/>
+        <Route path="/FeatureEngineering" element={<FeatureEngineering />} /> 
       </Route>
     </Routes>
   );

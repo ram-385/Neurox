@@ -1,9 +1,10 @@
 .chart-container {
   width: 95%;
-  
-  border: 1px solid #1f2a48;
+  min-height: 300px;
+  min-width: 400px;
+  border: 2px solid #1f2a48;
   border-radius: 12px;
-background: linear-gradient(
+   background: linear-gradient(
     145deg,
     rgba(25, 36, 59, 0.92),
     rgba(20, 29, 49, 0.97)
