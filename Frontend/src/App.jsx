@@ -8,7 +8,7 @@ import Upload from "./pages/upload/Upload.jsx";
 import Layout from "./layout/layout.jsx";
 import Explore from "./pages/explore/Explore.jsx";
 import FeatureEngineering from "./pages/fEngineering/FeatureEngineering.jsx";
-
+import Model from "./pages/modeling/Model.jsx";
 function App() {
   return (
     <Routes>
@@ -19,6 +19,7 @@ function App() {
         <Route path="/Upload" element={<Upload />} />
          <Route path='/Explore' element={<Explore/>}/>
         <Route path="/FeatureEngineering" element={<FeatureEngineering />} /> 
+        <Route path="/Model" element={<Model />} />
       </Route>
     </Routes>
   );

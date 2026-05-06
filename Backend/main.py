@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.routes import Upload
 from api.routes import ColumnOps
 from api.routes import FeatureEngineering 
+from api.routes import Model
 
 app = FastAPI()
 
@@ -20,7 +21,7 @@ app.add_middleware(
 app.include_router(Upload.router, prefix="/api")
 app.include_router(ColumnOps.router, prefix="/api")
 app.include_router(FeatureEngineering.router, prefix="/api")
-# app.include_router(analysis.router, prefix="/api")
+app.include_router(Model.router, prefix="/api")
 
 
 @app.get("/")

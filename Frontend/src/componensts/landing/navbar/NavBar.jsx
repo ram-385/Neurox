@@ -10,7 +10,7 @@ const Navlinks = [
     { label: "Upload Dataset", path: "/Upload" },
     { label: "Exploration", path: "/Explore" },
     { label: "Feature Engineering", path: "/FeatureEngineering" },
-    {label : 'Workflow',path:'/Workkflow'}
+    {label : 'Build Model',path:'/Model'},
 ]
 const Authlinks = [
     { label: 'Login', path: '/Login' },

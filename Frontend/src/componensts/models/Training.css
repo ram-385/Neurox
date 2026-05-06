@@ -1,0 +1,112 @@
+.training-box {
+  width: 100%;
+  max-width: 320px;
+  height: 95%;
+  padding: 16px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(20, 30, 60, 0.7),
+    rgba(10, 18, 35, 0.9)
+  );
+
+  border: 1px solid rgba(0, 140, 255, 0.25);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.training-title {
+  color: #00ffaa;
+  font-size: 16px;
+}
+
+.training-box select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #222;
+
+  background: #1a1a1a;
+  color: #fff;
+
+  outline: none;
+}
+
+.training-box select:focus {
+  border-color: #00ffaa;
+}
+
+.slider-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.slider-box label {
+  font-size: 13px;
+  color: #9fb3c8;
+}
+
+.slider-box input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+
+.training-box button {
+  margin-top: 6px;
+  padding: 10px;
+ 
+  border: none;
+  border-radius: 8px;
+
+  background: #2e3aa9;
+  color: #000;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.training-box button:hover {
+  opacity: 0.85;
+}
+
+/* Model Description Box */
+.model-desc {
+  padding: 12px;
+  border-radius: 10px;
+  min-height: 140px;
+  background: linear-gradient(
+    145deg,
+    rgba(30, 45, 80, 0.6),
+    rgba(15, 25, 50, 0.85)
+  );
+
+  border: 1px solid rgba(0, 140, 255, 0.25);
+
+  font-size: 13px;
+  color: #cbd5e1;
+
+  transition: all 0.3s ease;
+}
+
+.model-desc h4 {
+  margin-bottom: 6px;
+  color: #00ffaa;
+  font-size: 14px;
+}
+
+.model-desc p {
+  line-height: 1.4;
+  color: #9fb3c8;
+}
+
+
+.model-desc:hover {
+  border-color: #00ffaa;
+  box-shadow: 0 4px 12px rgba(0, 255, 170, 0.1);
+}
