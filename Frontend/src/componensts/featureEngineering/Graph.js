@@ -1,64 +1,64 @@
 export const PLOT_TYPES = {
-  HISTOGRAM: "histogram",
-  BOX: "box",
-  SCATTER: "scatter",
-  LINE: "line",
-  BAR: "bar",
-  COUNT: "count",
-  PIE: "pie",
-  HEATMAP: "heatmap",
-  VIOLIN: "violin",
-  KDE: "kde",
+  HISTOGRAM: "Histogram",
+  BOX: "Box",
+  SCATTER: "Scatter",
+  LINE: "Line",
+  BAR: "Bar",
+  COUNT: "Count",
+  PIE: "Pie",
+  HEATMAP: "Heatmap",
+  VIOLIN: "Violin",
+  DENSITY: "Density",
 
   // advanced
-  PAIR: "pair",
-  SCATTER_3D: "scatter3d",
-  TREEMAP: "treemap",
-  SUNBURST: "sunburst",
+  PAIR: "Pair",
+  SCATTER_3D: "Scatter 3D",
+  TREEMAP: "Treemap",
+  SUNBURST: "Sunburst",
 };
 
 export const GRAPH_RULES = {
   single: {
     numerical: [
-      "histogram",
-      "box",
-      "violin",
-      "kde"
+      "Histogram",
+      "Box",
+      "Violin",
+      "Density"
     ],
     categorical: [
-      "bar",
-      "count",
-      "pie"
+      "Bar",
+      "Count",
+      "Pie"
     ],
     binary: [
-      "count",
-      "bar"
+      "Count",
+      "Bar"
     ]
   },
 
   double: {
     numerical_numerical: [
-      "scatter",
-      "line"
+      "Scatter",
+      "Line"
     ],
     categorical_numerical: [
-      "bar",
-      "box",
-      "violin"
+      "Bar",
+      "Box",
+      "Violin"
     ],
     categorical_categorical: [
-      "heatmap",
-      "count"
+      "Heatmap",
+      "Count"
     ]
   },
 
   multiple: {
     numerical: [
-      "pair",
-      "heatmap"
+      "Pair",
+      "Heatmap"
     ],
     mixed: [
-      "pair"
+      "Pair"
     ]
   }
 };

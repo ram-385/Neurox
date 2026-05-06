@@ -7,35 +7,50 @@ const PlotComponent = Plot?.default || Plot;
 function Graph({ config, data }) {
   if (!config || !data || data.length === 0) return null;
 
-  const { type, x, y, z = null,color = null,title = "",bins = 20,columns = []} = config || {};
+  const {
+    type,
+    x,
+    y,
+    z = null,
+    color = null,
+    bins = 20,
+    columns = []
+  } = config || {};
+  const xLabel = config.x || "";
+  const yLabel = config.y || "";
+  const title = config.title || "";
 
   let plotData = [];
 
   let layout = {
-  title: title || "",
-  autosize: true,
- 
-
-  paper_bgcolor: "#0f172a",   
-   plot_bgcolor: "#0b1224",
-   plot_height: 200,    
-
-  font: {
-    color: "#e6f1ff"
+     title: {
+    text: title || "",
+    font: {
+      size: 18,
+      color: "#e6f1ff"
+    },
+    x: 0.5,   // center title
+    xanchor: "center"
   },
-   
-  xaxis: {
-    gridcolor: "#1f2a4a",
-    zerolinecolor: "#1f2a4a"
+    autosize: true,
+    paper_bgcolor: "#0f172a",
+    plot_bgcolor: "#0f172a",
+    font: { color: "#e6f1ff" },
+    height: undefined,
+    xaxis: {
+    title: {
+      text: xLabel || ""
+    }
   },
-
   yaxis: {
-    gridcolor: "#1f2a4a",
-    zerolinecolor: "#1f2a4a"
+    title: {
+      text: yLabel || ""
+    }
   }
-};
-  
+  };
+
   const getColumn = (col) => data.data.map((d) => d[col]);
+  
 
   const getCounts = (col) => {
     const counts = {};
@@ -46,137 +61,158 @@ function Graph({ config, data }) {
     return counts;
   };
 
-  const getNumericColumns = () => {
-    return columns?.filter(c => c.type === "numerical").map(c => c.name) || [];
-  };
+  const getNumericColumns = () =>
+    columns?.filter((c) => c.type === "numerical").map((c) => c.name) || [];
 
   
+  function kernelDensity(x, data) {
+  const n = data.length;
+
+  const mean = data.reduce((a, b) => a + b, 0) / n;
+
+  const variance =
+    data.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / n;
+
+  const bandwidth = 1.06 * Math.sqrt(variance) * Math.pow(n, -1 / 5);
+
+  const sum = data.reduce((acc, xi) => {
+    const u = (x - xi) / bandwidth;
+    return acc + Math.exp(-0.5 * u * u);
+  }, 0);
+
+  return sum / (n * bandwidth * Math.sqrt(2 * Math.PI));
+}
   switch (type) {
 
-    case "histogram":
+    //Histogram with bins
+    case "Histogram":
       plotData = [{
         x: getColumn(x),
         type: "histogram",
         nbinsx: bins || 20,
+        opacity: 0.55,
+
+        marker: {
+          color: "#271ad4",
+          line: {
+            color: "#0b1220",
+            width: 1.3
+          }
+        }
       }];
       break;
 
-    case "box":
+    case "Box":
       plotData = [{
         y: getColumn(y || x),
-        type: "box",
+        type: "box"
       }];
       break;
 
-    case "violin":
+    case "Violin":
       plotData = [{
         y: getColumn(y || x),
         type: "violin",
         box: { visible: true },
-        meanline: { visible: true },
+        meanline: { visible: true }
       }];
       break;
 
-
-
-    case "kde":
+    
+    case "Density": {
       const values = getColumn(x).filter(v => v !== null && v !== undefined);
+      const sorted = [...values].sort((a, b) => a - b);
 
+      const min = Math.min(...sorted);
+      const max = Math.max(...sorted);
 
-      const kde = (arr, bandwidth = 1) => {
-        const min = Math.min(...arr);
-        const max = Math.max(...arr);
+      // smoother resolution
+      const points = 100;
+      const xVals = Array.from({ length: points }, (_, i) =>
+        min + (i * (max - min)) / (points - 1)
+      );
 
-        const points = 100;
-        const step = (max - min) / points;
-
-        const xVals = [];
-        const yVals = [];
-
-        for (let i = 0; i <= points; i++) {
-          const x0 = min + i * step;
-          xVals.push(x0);
-
-          let sum = 0;
-          for (let j = 0; j < arr.length; j++) {
-            const u = (x0 - arr[j]) / bandwidth;
-            sum += Math.exp(-0.5 * u * u);
-          }
-
-          yVals.push(sum / (arr.length * bandwidth * Math.sqrt(2 * Math.PI)));
-        }
-
-        return { x: xVals, y: yVals };
-      };
-
-      const kdeResult = kde(values, 1);
+      const yVals = xVals.map((xi) =>
+        kernelDensity(xi, sorted)
+      );
 
       plotData = [
-       
+
+        // histogram base
         {
           x: values,
           type: "histogram",
           histnorm: "probability density",
-          opacity: 0.4,
+          nbinsx: Math.ceil(Math.sqrt(values.length)),
+          opacity: 0.55,
+
+          marker: {
+            color:  "#271ad4",
+            line: {
+              color: "#0b1220",
+              width: 1.3
+            }
+          }
         },
 
-       
+        // KDE line
         {
-          x: kdeResult.x,
-          y: kdeResult.y,
+          x: xVals,
+          y: yVals,
           type: "scatter",
           mode: "lines",
+
           line: {
+            color: "#9d3d05",
             width: 3,
-          },
-        },
+            shape: "spline"
+          }
+        }
       ];
       break;
+    }
 
-
-
-    case "scatter":
+    case "Scatter":
       plotData = [{
         x: getColumn(x),
         y: getColumn(y),
         mode: "markers",
         type: "scatter",
         marker: {
-          color: color ? getColumn(color) : "#00ffaa",
-        },
+          color: color ? getColumn(color) : "#00ffaa"
+        }
       }];
       break;
 
-
-    case "line":
+    case "Line":
       plotData = [{
         x: getColumn(x),
         y: getColumn(y),
         type: "scatter",
-        mode: "lines",
+        mode: "lines"
       }];
       break;
 
-    case "bar":
-    case "count":
+    case "Bar":
+    case "Count":
       const counts = getCounts(x);
       plotData = [{
         x: Object.keys(counts),
         y: Object.values(counts),
-        type: "bar",
+        type: "bar"
       }];
       break;
 
-    case "pie":
+    case "Pie":
       const pieCounts = getCounts(x);
       plotData = [{
         labels: Object.keys(pieCounts),
         values: Object.values(pieCounts),
-        type: "pie",
+        type: "pie"
       }];
       break;
 
-    case "heatmap":
+    case "Heatmap":
       const numCols = getNumericColumns();
 
       const matrix = numCols.map((c1) =>
@@ -184,8 +220,7 @@ function Graph({ config, data }) {
           const v1 = getColumn(c1);
           const v2 = getColumn(c2);
 
-          const mean = (arr) =>
-            arr.reduce((a, b) => a + b, 0) / arr.length;
+          const mean = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
 
           const m1 = mean(v1);
           const m2 = mean(v2);
@@ -206,68 +241,66 @@ function Graph({ config, data }) {
         z: matrix,
         x: numCols,
         y: numCols,
-        type: "heatmap",
+        type: "heatmap"
       }];
       break;
 
-   
-    case "scatter3d":
+    case "Scatter 3D":
       plotData = [{
         x: getColumn(x),
         y: getColumn(y),
         z: getColumn(z),
         mode: "markers",
-        type: "scatter3d",
+        type: "scatter3d"
       }];
       break;
 
-    case "area":
+    case "Area":
       plotData = [{
         x: getColumn(x),
         y: getColumn(y),
         fill: "tozeroy",
-        type: "scatter",
+        type: "scatter"
       }];
       break;
 
-    case "treemap":
+    case "Treemap":
       plotData = [{
         labels: getColumn(x),
         parents: getColumn(y || x).map(() => ""),
-        type: "treemap",
+        type: "treemap"
       }];
       break;
 
-    case "sunburst":
+    case "Sunburst":
       plotData = [{
         labels: getColumn(x),
         parents: getColumn(y || x).map(() => ""),
-        type: "sunburst",
+        type: "sunburst"
       }];
       break;
 
-    case "pair":
-      // simplified pair plot (scatter matrix)
+    case "Pair":
       const cols = getNumericColumns();
 
       plotData = [{
         type: "splom",
         dimensions: cols.map((c) => ({
           label: c,
-          values: getColumn(c),
-        })),
+          values: getColumn(c)
+        }))
       }];
       break;
 
-    case "parallel":
+    case "Parallel":
       const pCols = getNumericColumns();
 
       plotData = [{
         type: "parcoords",
         dimensions: pCols.map((c) => ({
           label: c,
-          values: getColumn(c),
-        })),
+          values: getColumn(c)
+        }))
       }];
       break;
 
@@ -275,14 +308,18 @@ function Graph({ config, data }) {
       return <div>Unsupported chart</div>;
   }
 
- return (
+  return (
+    <div className="graph-wrapper">
       <PlotComponent
         className="graph"
         data={plotData}
         layout={layout}
         config={{ responsive: true }}
+        useResizeHandler
+        style={{ width: "100%", height: "100%" }}
       />
-);
+    </div>
+  );
 }
 
 export default Graph;

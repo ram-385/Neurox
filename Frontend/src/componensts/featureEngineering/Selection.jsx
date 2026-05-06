@@ -31,7 +31,7 @@ function Selection({ columns, onPlot }) {
 
       z: null,
       color: null,
-      title: `${plotType.toUpperCase()} Plot`,
+      title: `${plotType} Plot`,
       bins: 20,
 
     columns: columns
