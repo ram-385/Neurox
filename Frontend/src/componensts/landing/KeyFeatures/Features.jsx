@@ -17,24 +17,24 @@ function Features() {
           <Card
             img={uploadImg}
             title="Upload Data"
-            desc="Easily upload your datasets in seconds and kickstart your machine learning workflow"
+            desc="Easily upload your datasets in various formats and get started with your data analysis and machine learning projects."
           />
         </NavLink>
+
+        <NavLink to="/Explore" style={{ textDecoration: "none" }}>
+          <Card
+            img={clean}
+            title="Exploratory Data Analysis & Cleaning"
+            desc="Effortlessly explore and clean your data with our intuitive interface, ensuring your datasets are ready for analysis and modeling."
+          />
+        </NavLink>
+
 
         <NavLink to="/FeatureEngineering" style={{ textDecoration: "none" }}>
           <Card
-            img={clean}
-            title="Automatic Data Cleaning"
-            desc="Automatically handle missing values, outliers, and inconsistencies with smart data cleaning tools."
-          />
-        </NavLink>
-
-
-        <NavLink to="/Viz" style={{ textDecoration: "none" }}>
-          <Card
             img={viz}
-            title="Interactive visualizations"
-            desc="Transform your data into interactive charts and gain meaningful insights instantly."
+            title="Transform Features with interactive Visualizations"
+            desc="Perform feature engineering and transformation with our interactive visualization tools."
           />
         </NavLink>
 

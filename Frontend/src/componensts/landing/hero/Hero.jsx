@@ -1,6 +1,7 @@
 import React from 'react'
 import './Hero.css'
 import heroImg from '../../../assets/landing-assets/Tree.webp'  
+import { NavLink } from 'react-router-dom'
 
 function Hero() {
   return (
@@ -18,8 +19,9 @@ function Hero() {
         </p>
 
         <div className="hero-buttons">
-          <button className="btn-primary">Upload Dataset</button>
-          <button className="btn-secondary">view Demo</button>
+          <NavLink to="/Upload">
+            <button className="btn-primary">Upload Dataset</button>
+          </NavLink>
         </div>
       </div>
 

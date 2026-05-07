@@ -3,6 +3,7 @@ import "./Footer.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faInstagram, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
     return (
@@ -20,10 +21,10 @@ function Footer() {
                 <div className="flinks">
                     <div className="footer-links">
                      <h4>Quick Links</h4>
-                        <a href="#">Home</a>
-                        <a href="#">Features</a>
-                        <a href="#">Workflow</a>
-                        <a href="#">Contact</a>
+                        <NavLink to="/">Home</NavLink>
+                        <NavLink to="/Explore">Exploration</NavLink>
+                        <NavLink to="/FeatureEngineering">Feature Engineering</NavLink>
+                        <NavLink to="/Model">Model Training</NavLink>
                     </div >
                     <div className="footer-links">
                         <h4>Resources</h4>
