@@ -296,6 +296,7 @@ const activeData = (view)?viewData:data
         <div className="analysis-box">
 
          <div className="analysis-selection">
+          
            <SelectionBox
             columns={columns}
             Data={data.data}

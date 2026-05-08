@@ -43,7 +43,7 @@ function Selection({ columns, onPlot }) {
 
       <h3>Analysis Controls</h3>
 
-      {/* Column 1 */}
+   
       <select
         value={col1}
         onChange={(e) => {
@@ -59,8 +59,8 @@ function Selection({ columns, onPlot }) {
         ))}
       </select>
 
-      {/* Column 2 */}
-      {col1 && (
+     
+      
         <select
           value={col2}
           onChange={(e) => setCol2(e.target.value)}
@@ -74,9 +74,9 @@ function Selection({ columns, onPlot }) {
               </option>
             ))}
         </select>
-      )}
+      
 
-      {/* Plot Type */}
+     
       {suggestedPlots.length > 0 && (
         <select
           value={plotType}
@@ -90,7 +90,7 @@ function Selection({ columns, onPlot }) {
         </select>
       )}
 
-      {/* BUTTON */}
+     
       <button onClick={handlePlot}>
         Plot
       </button>

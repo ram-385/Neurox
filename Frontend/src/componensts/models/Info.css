@@ -10,7 +10,7 @@
   gap: 30px;
 
   border-radius: 18px;
-
+  min-height: 80px;
   background: linear-gradient(
     145deg,
     rgba(10, 18, 38, 0.96),

@@ -160,46 +160,16 @@ function Model() {
 
   return (
     <div className="model">
-
       <div className='box'>
-
-        <Training
-          columns={columns}
-          onTrain={getResults}
-        />
-
+        <Training columns={columns} onTrain={getResults}/>
         <div className='center'>
-
-          <Metrics
-            value={metricsData}
-            task={info.task}
-          />
-
+          <Metrics value={metricsData}task={info.task}/>
           <div className='graph-wrapper'>
-
-            <div className='graph'>
-
-              <Performance
-                data={performanceData}
-              />
-
-            </div>
-
-            <button className='toggle-btn'>
-              Performance
-            </button>
-
+              <Performance data = {performanceData}/>
           </div>
-
-          <Info
-            info={info}
-            onSave={handleSave}
-          />
-
+          <Info info={info} onSave={handleSave}/>
         </div>
-
       </div>
-
     </div>
   )
 }

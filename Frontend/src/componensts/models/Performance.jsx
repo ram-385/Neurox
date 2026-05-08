@@ -5,76 +5,117 @@ const PlotComponent = Plot?.default || Plot;
 
 function Performance({ data = [] }) {
 
+  const dummyData = [
+    {
+      model: "Random Forest",
+      metric: "Accuracy",
+      score: 0.91
+    },
+    {
+      model: "SVM",
+      metric: "Accuracy",
+      score: 0.87
+    },
+    {
+      model: "Logistic Regression",
+      metric: "Accuracy",
+      score: 0.84
+    },
+    {
+      model: "Decision Tree",
+      metric: "Accuracy",
+      score: 0.80
+    }
+  ];
+
+
   const plotData = useMemo(() => {
 
-    const safeData = Array.isArray(data) ? data : [];
-
-    if (safeData.length === 0) {
-      return {
-        traces: [],
-        layout: {}
-      };
-    }
+    const safeData =
+      Array.isArray(data) && data.length > 0
+        ? data
+        : dummyData;
 
     const filtered = safeData.filter(
       item => item.metric !== "Error"
     );
 
     return {
+
       traces: [
         {
           type: "bar",
+
           x: filtered.map(item => item.model),
+
           y: filtered.map(item => item.score),
-          text: filtered.map(item => item.score),
-          textposition: "auto"
+
+          text: filtered.map(
+            item => Number(item.score).toFixed(4)
+          ),
+
+          textposition: "auto",
+
+          marker: {
+            color: "#00ffaa"
+          }
         }
       ],
 
       layout: {
-        title: "Model Performance Comparison",
-          xaxis: {
-              title: {
-                  text: "Models",
-                  font: {
-                      color: "#ffffff"
-                  }
-              },
-              tickfont: {
-                  color: "#ffffff"
-              },
-              showgrid: false,
-              zeroline: false
+
+        title: {
+          text: "Model Performance Comparison",
+          font: {
+            color: "#ffffff"
+          }
+        },
+
+        paper_bgcolor: "#0f1932",
+        plot_bgcolor: "#0f1932",
+
+        xaxis: {
+          title: {
+            text: "Models",
+            font: {
+              color: "#ffffff"
+            }
           },
-         paper_bgcolor: "#0f1932",
-         plot_bgcolor: "#0f1932",
+
+          tickfont: {
+            color: "#ffffff"
+          },
+
+          showgrid: false,
+          zeroline: false
+        },
 
         yaxis: {
-          title: filtered[0]?.metric || "Score"
+
+          title: {
+            text: filtered[0]?.metric || "Score",
+            font: {
+              color: "#ffffff"
+            }
+          },
+
+          tickfont: {
+            color: "#ffffff"
+          },
+
+          showgrid: false,
+          zeroline: false
         },
-        height: 300
+
+        font: {
+          color: "#ffffff"
+        },
+
+        height: 400
       }
     };
 
   }, [data]);
-
-
-
-  if (!Array.isArray(data) || data.length === 0) {
-    return (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-      >
-        No performance data available
-      </div>
-    );
-  }
 
 
 
@@ -86,15 +127,25 @@ function Performance({ data = [] }) {
         height: "100%"
       }}
     >
+
       <PlotComponent
         data={plotData.traces}
+
         layout={plotData.layout}
+
         style={{
           width: "100%",
           height: "100%"
         }}
+
         useResizeHandler={true}
+
+        config={{
+          displayModeBar: false,
+          responsive: true
+        }}
       />
+
     </div>
   );
 }

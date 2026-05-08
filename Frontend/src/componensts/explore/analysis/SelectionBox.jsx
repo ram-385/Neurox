@@ -32,7 +32,7 @@ const ops = isNumerical(columnType)
   return (
     <div className="selection-box">
 
-      {/* Column */}
+       <h3 style={{color:'#00ffaa'}}>Analysis Controll</h3>
 
       <div style={{width:'90%'}}>
       <select value={selectedColumn} onChange={handleColumnChange}>
