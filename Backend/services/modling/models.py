@@ -2,6 +2,7 @@ from sklearn.linear_model import LinearRegression,LogisticRegression
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC, SVR
 from .base import BaseModel
 
 class LinearRegressionModel(BaseModel):
@@ -37,7 +38,7 @@ class LogisticRegressionModel(BaseModel):
 class DecisionTreeModel(BaseModel):
 
     def train(self, X_train, y_train, task):
-        if task == "classification":
+        if task == "Classification":
             model = DecisionTreeClassifier()
         else:
             model = DecisionTreeRegressor()
@@ -55,7 +56,7 @@ class DecisionTreeModel(BaseModel):
 class RandomForestModel(BaseModel):
 
     def train(self, X_train, y_train, task):
-        if task == "classification":
+        if task == "Classification":
             model = RandomForestClassifier()
         else:
             model = RandomForestRegressor()
@@ -82,7 +83,24 @@ class NaiveBayesModel(BaseModel):
 
     def feature_importance(self, model, columns):
         return None
-    
+class SVMModel(BaseModel):
+
+    def train(self, X_train, y_train, task):
+        if task == "Classification":
+            model = SVC(kernel='linear', probability=True)
+        else:
+            model = SVR(kernel='linear')
+
+        model.fit(X_train, y_train)
+        return model
+
+    def predict(self, model, X_test):
+        return model.predict(X_test)
+
+    def feature_importance(self, model, columns):
+        if hasattr(model, "coef_"):
+            return dict(zip(columns, model.coef_[0]))
+        return None   
 
 MODEL_REGISTRY = {
     "linear_regression": LinearRegressionModel(),
@@ -90,4 +108,5 @@ MODEL_REGISTRY = {
     "decision_tree": DecisionTreeModel(),
     "random_forest": RandomForestModel(),
     "naive_bayes": NaiveBayesModel(),
+    "svm": SVMModel()
 }

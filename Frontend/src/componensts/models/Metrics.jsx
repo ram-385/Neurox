@@ -1,15 +1,16 @@
 import React from 'react'
 import './Metrics.css'
-import { RegressionMetrics, ClassificationMetrics } from './metric'
+import { RegressionMetrics, ClassificationMetrics } from './Metric.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Progress from '../../assets/modeling-assets/progress.png';
 
-function Metrics({ value, metrics }) {
+function Metrics({ value, task }) {
 
   let activeMetrics = [];
 
-  if (metrics === "Regression") {
+  if (task === "Regression") {
     activeMetrics = RegressionMetrics;
-  } else if (metrics === "Classification") {
+  } else if (task === "Classification") {
     activeMetrics = ClassificationMetrics;
   }
 
@@ -18,17 +19,32 @@ function Metrics({ value, metrics }) {
 
       <ul className="metric-list">
         {activeMetrics.map((m) => (
+         
           <li key={m.value}>
-             <div className='icon-head'>
-               <FontAwesomeIcon icon={m.icon} />
-               <span style ={{ color: '#47add9' }}>{m.label}</span>
-             </div>
 
-            <strong>
-              {value?.[m.value] !== undefined
-                ? Number(value[m.value]).toFixed(4)
-                : "--"}
-            </strong>
+           
+            <div className='icon-head'>
+              <FontAwesomeIcon icon={m.icon} />
+              <span>{m.label}</span>
+            </div>
+
+            
+            <div className='metric-value'>
+              <strong>
+                {value?.[m.value] !== undefined
+                  ? Number(value[m.value]).toFixed(4)
+                  : "--"}
+              </strong>
+                <img
+                src={Progress}
+                alt="progress"
+                className='progress'
+              />
+
+            </div>
+
+            <h3 className='metric-desc'>{m.desc}</h3>
+
           </li>
         ))}
       </ul>

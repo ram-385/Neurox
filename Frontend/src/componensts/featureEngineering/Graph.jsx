@@ -309,7 +309,7 @@ function Graph({ config, data }) {
   }
 
   return (
-    <div className="graph-wrapper">
+    <div className="fgraph-wrapper">
       <PlotComponent
         className="graph"
         data={plotData}

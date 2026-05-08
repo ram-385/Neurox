@@ -1,0 +1,100 @@
+.information-box {
+  width: 90%;
+
+  margin: 20px auto;
+  padding: 20px 26px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(10, 18, 38, 0.96),
+    rgba(6, 12, 28, 0.98)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 0 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 12px rgba(255, 255, 255, 0.02);
+
+  overflow-x: auto;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  min-width: 120px;
+}
+
+.information span {
+  font-size: 13px;
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.55);
+
+  letter-spacing: 0.3px;
+}
+
+.information h4 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #f3f7ff;
+
+  white-space: nowrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 200px;
+
+  padding: 12px 18px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.03);
+
+  transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+  border-color: rgba(120, 119, 255, 0.5);
+
+  background: rgba(120, 119, 255, 0.08);
+
+  transform: translateY(-2px);
+}
+
+.action-btn svg {
+  font-size: 15px;
+  color: #dce6ff;
+}
+
+.action-btn button {
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}

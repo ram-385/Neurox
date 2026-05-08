@@ -1,24 +1,29 @@
-/* Container */
+
 .metric-card {
   width: 95%;
-  padding: 14px;
-  border-radius: 14px;
+  padding: 18px;
+  border-radius: 18px;
 
   background: linear-gradient(
     145deg,
-    rgba(20, 30, 60, 0.7),
-    rgba(10, 18, 35, 0.9)
+    rgba(18, 28, 52, 0.78),
+    rgba(8, 14, 28, 0.92)
   );
 
-  border: 1px solid rgba(0, 140, 255, 0.2);
-  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 170, 255, 0.18);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 0 25px rgba(0, 140, 255, 0.08),
+    inset 0 0 15px rgba(255, 255, 255, 0.02);
 }
 
-/* Row layout */
+
 .metric-list {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 22px;
   flex-wrap: wrap;
 
   list-style: none;
@@ -26,79 +31,152 @@
   margin: 0;
 }
 
-/* Each metric box */
-.metric-list li {
-  flex: 1 1 180px;
-  min-width: 160px;
-  max-width: 220px;
 
-  padding: 14px;
-  border-radius: 12px;
+.metric-list li {
+  position: relative;
+  overflow: hidden;
+
+  flex: 1 1 220px;
+  min-width: 220px;
+  max-width: 270px;
+
+  padding: 18px;
+  border-radius: 18px;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 14px;
 
   background: linear-gradient(
     145deg,
-    rgba(30, 45, 80, 0.6),
-    rgba(15, 25, 50, 0.85)
+    rgba(28, 42, 75, 0.72),
+    rgba(14, 22, 45, 0.92)
   );
 
-  border: 1px solid rgba(0, 140, 255, 0.25);
+  border: 1px solid rgba(0, 160, 255, 0.18);
 
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
+
+  backdrop-filter: blur(12px);
 }
 
-/* Hover */
+
+.metric-list li::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top right,
+    rgba(0, 255, 170, 0.12),
+    transparent 55%
+  );
+
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.metric-list li:hover::before {
+  opacity: 1;
+}
+
+
 .metric-list li:hover {
-  transform: translateY(-5px);
-  border-color: #00ffaa;
-  box-shadow: 0 6px 18px rgba(0, 255, 170, 0.15);
+  transform: translateY(-6px);
+
+  border-color: rgba(0, 255, 170, 0.4);
+
+  box-shadow:
+    0 10px 30px rgba(0, 255, 170, 0.12),
+    0 0 18px rgba(0, 140, 255, 0.1);
 }
 
-/* ICON + TITLE ROW */
+
 .icon-head {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
 
-  font-weight: 600;
+  z-index: 2;
 }
 
-/* Icon */
 .icon-head svg {
-  font-size: 16px;
+  font-size: 18px;
   color: #4dabf7;
 
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* Title */
 .icon-head span {
-  font-size: 27px;
+  font-size: 25px;
   font-weight: 600;
   letter-spacing: 0.3px;
+
+  color: #47add9;
 
   transition: color 0.3s ease;
 }
 
-/* Value (centered) */
-.metric-list li strong {
-  margin-top: 12px;
+.metric-value {
+  position: relative;
 
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 12px;
 
-  font-size: 20px;
-  font-weight: 600;
-  color: #e6edf3;
-
-  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 2;
 }
 
-/* Hover Animations */
+
+.progress {
+  width: 42px;
+  height: 42px;
+
+  object-fit: contain;
+
+  opacity: 0.3;
+
+  filter:
+    brightness(1.5)
+    drop-shadow(0 0 10px rgba(217, 0, 255, 0.3));
+
+  mix-blend-mode: screen;
+
+  transition: all 0.3s ease;
+}
+
+.metric-value strong {
+  font-size: 24px;
+  font-weight: 700;
+
+  color: #f1f5ff;
+
+  letter-spacing: 0.5px;
+
+  transition: all 0.3s ease;
+}
+
+
+.metric-desc {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 20px;
+  font-weight: 500;
+
+  color: #23bacb;
+
+  letter-spacing: 0.3px;
+
+  z-index: 2;
+}
+
+
 .metric-list li:hover .icon-head svg {
-  transform: scale(1.2) rotate(5deg);
+  transform: scale(1.15) rotate(6deg);
   color: #00ffaa;
 }
 
@@ -106,20 +184,29 @@
   color: #00ffaa;
 }
 
-.metric-list li:hover strong {
-  transform: scale(1.05);
+.metric-list li:hover .metric-value strong {
+  transform: scale(1.06);
   color: #ffffff;
 }
 
-/* Responsive */
+.metric-list li:hover .progress {
+  opacity: 0.22;
+  transform: scale(1.08) rotate(8deg);
+}
+
+/* ================= RESPONSIVE ================= */
 @media (max-width: 900px) {
   .metric-list li {
     flex: 1 1 45%;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
   .metric-list li {
     flex: 1 1 100%;
+  }
+
+  .metric-value strong {
+    font-size: 20px;
   }
 }

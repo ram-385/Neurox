@@ -13,22 +13,26 @@ export const RegressionMetrics = [
   {
     label: "MAE",
     value: "MAE",
-    icon: faRuler
+    icon: faRuler,
+    desc: "lower is better"
   },
   {
     label: "MSE",
     value: "MSE",
-    icon: faSquareRootVariable
+    icon: faSquareRootVariable,
+    desc: "lower is better"
   },
   {
     label: "RMSE",
     value: "RMSE",
-    icon: faWaveSquare
+    icon: faWaveSquare,
+    desc: "lower is better"
   },
   {
     label: "R2Score",
     value: "R2Score",
-    icon: faChartPie
+    icon: faChartPie,
+    desc: "higher is better"
   }
 ];
 
@@ -36,21 +40,25 @@ export const ClassificationMetrics = [
   {
     label: "Accuracy",
     value: "Accuracy",
-    icon: faBullseye
+    icon: faBullseye,
+    desc: "higher is better"
   },
   {
     label: "Precision",
     value: "Precision",
-    icon: faCrosshairs
+    icon: faCrosshairs,
+    desc: "higher is better"
   },
   {
     label: "Recall",
     value: "Recall",
-    icon: faRotateLeft
+    icon: faRotateLeft,
+    desc: "higher is better"
   },
   {
     label: "F1-Score",
     value: "F1-Score",
-    icon: faChartLine
+    icon: faChartLine,
+    desc: "higher is better"
   }
 ];
