@@ -10,17 +10,16 @@ import "./Explore.css";
 
 function Explore() {
   
-  // Global State
+  
   const [datasetId, setDatasetId] = useState(null);
-  const [data, setData] = useState([]);           // table preview
-  const [columns, setColumns] = useState([]);     // column list
-  const [stats, setStats] = useState(null);       // stat result
+  const [data, setData] = useState([]);           
+  const [columns, setColumns] = useState([]);     
+  const [stats, setStats] = useState(null);       
   const [analysisConfig, setAnalysisConfig] = useState(null);
   const [viewData, setViewData] = useState([])
   const [view, setView] = useState(false)
   
 
-  // Load from local storage  (after upload)
   useEffect(() => {
     const id = localStorage.getItem("dataset_id");
     const preview = localStorage.getItem("Data");
@@ -40,20 +39,16 @@ function Explore() {
   }
   }, []);
 
-// handlle Plots
 const handlePlots =(config)=>{
   setAnalysisConfig(config);
-  // For simplicity, we just set the config here.
-  // The Chart component will react to this change and fetch data if needed.
+  
 }
 
 
-// Action Paneld  Handler
  const handleActionPanel = async (config) => {
   let url = "";
   let body = { dataset_id: datasetId };
 
-  // Filter
   if (config.type === "filter") {
     url = "/filter";
     body.column = config.column;
@@ -61,14 +56,12 @@ const handlePlots =(config)=>{
     body.value = config.value;
   }
 
-  // Sort
   else if (config.type === "sort") {
     url = "/sort";
     body.column = config.column;
     body.order = config.order || "asc";
   }
 
-  // Group By
   else if (config.type === "group") {
     url = "/groupby";
     body.group_column = config.group_column;
@@ -106,7 +99,6 @@ const handlePlots =(config)=>{
   }
 };
 
-  // Analysis Handler
  const handleAnalyze = async (config) => {
   const { column, operation, category } = config;
   
@@ -276,7 +268,6 @@ const activeData = (view)?viewData:data
    
     <div className="explore-layout">
 
-      {/* ⬅ LEFT PANEL */}
       <div className="left-panel">
         <ColumnPanel 
           columns={columns} 

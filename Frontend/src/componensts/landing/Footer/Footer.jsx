@@ -11,13 +11,13 @@ function Footer() {
 
             <div className="footer-container">
 
-                {/* LEFT */}
+                
                 <div className="footer-left">
                     <h2>AI NeuroX</h2>
                     <p>Build, train and visualize ML pipelines effortlessly.</p>
                 </div>
 
-                {/* CENTER LINKS */}
+                
                 <div className="flinks">
                     <div className="footer-links">
                      <h4>Quick Links</h4>
@@ -35,7 +35,7 @@ function Footer() {
                     </div>
                 </div>
 
-                {/* RIGHT SOCIAL */}
+                
                <div className="social-container">
 
 

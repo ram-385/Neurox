@@ -47,7 +47,7 @@ function OperationPanel({ columns = [], onAnalyze }) {
     (opt) => opt.value === subOperation
   );
 
-  // Params Renderer (Fully Dynamic)
+  // Params Renderer 
   const renderParams = () => {
     if (!selectedSubOp || !selectedSubOp.params?.length) return null;
 

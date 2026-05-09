@@ -9,7 +9,7 @@ function ColumnItem({ column, selected, onSelect, onAction }) {
       className={`column-item ${selected ? "active" : ""}`}
       onClick={() => onSelect(column.name)}
     >
-      {/* LEFT */}
+      
       <div className="column-left">
         <div className="rectangle"></div>
 

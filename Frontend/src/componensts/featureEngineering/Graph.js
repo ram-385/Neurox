@@ -10,7 +10,7 @@ export const PLOT_TYPES = {
   VIOLIN: "Violin",
   DENSITY: "Density",
 
-  // advanced
+  
   PAIR: "Pair",
   SCATTER_3D: "Scatter 3D",
   TREEMAP: "Treemap",
@@ -83,14 +83,14 @@ export function normalizeType(dtype) {
     return "binary";
   }
 
-  return "categorical"; // object, string, etc.
+  return "categorical"; 
 }
 
 
 
 
 export function getSuggestedPlots(columns) {
-  // normalize types type inference
+
   const normalized = columns.map(c => ({
     ...c,
     type: normalizeType(c.type)

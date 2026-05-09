@@ -23,7 +23,6 @@ function NavBar() {
     return (
         <div className="navbar-container">
 
-            {/* Left: Logo */}
             <div className="nav-left">
                 <Logo src={Dsc} alt="DSC Logo" />
 
@@ -32,12 +31,10 @@ function NavBar() {
                 </div>
             </div>
 
-            {/* Center: Nav Links */}
             <div className="nav-center">
                 <Navlink links={Navlinks} />
             </div>
 
-            {/* Right: Auth Links */}
             <div className="nav-right">
                 <Navlink links={Authlinks} />
             </div>

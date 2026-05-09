@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100%;
 
-  background: #0b1220; /* dark blue base */
+  background: #0b1220; 
   color: #e6edf3;
   overflow: hidden;
 }
@@ -58,14 +58,6 @@
   min-width: 260px;
   max-width: 320px;
 
-  /* border-left: 1px solid rgba(0, 140, 255, 0.2);
-
-  background: linear-gradient(
-    145deg,
-    rgba(15, 25, 50, 0.9),
-    rgba(8, 14, 28, 0.95)
-  ); */
-
   padding: 12px;
 
   overflow-y: auto;
@@ -90,7 +82,7 @@
     flex-direction: column;
   }
 
-  /* LEFT */
+  
   .feature-engineering-container > :first-child {
     width: 100%;
     max-width: 100%;
@@ -98,7 +90,7 @@
     border-bottom: 1px solid rgba(0, 140, 255, 0.2);
   }
 
-  /* RIGHT */
+  
   .right {
     width: 100%;
     max-width: 100%;

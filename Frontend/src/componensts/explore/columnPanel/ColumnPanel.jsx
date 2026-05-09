@@ -17,13 +17,13 @@ function ColumnPanel({columns=[],onAction}) {
   return (
     <div className="column-panel">
 
-      {/* Header */}
+
       <div className="panel-header">
         <h3>Columns</h3>
         <span>{columns.length}</span>
       </div>
 
-      {/* Search */}
+      
       <input
         type="text"
         placeholder="Search column..."
@@ -32,7 +32,7 @@ function ColumnPanel({columns=[],onAction}) {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* Column List */}
+      
       <div className="column-list">
         {filteredColumns.map((col, index) => (
           <ColumnItem

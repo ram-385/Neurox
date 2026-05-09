@@ -79,14 +79,12 @@
   justify-content: space-between;
 }
 
-/* HOVER */
 .action-box:hover {
   transform: translateY(-5px) scale(1.03);
   background: #16225a;
   border: 1px solid #00ffaa55;
 }
 
-/* 🔥 ACTIVE STATE (CLICKED) */
 .action-box.active {
   width: 240px;
   height: 140px;
@@ -99,7 +97,6 @@
   transform: scale(1.05);
 }
 
-/* ICON */
 .icon-squre {
   background: #1f2a4a;
   padding: 10px;
@@ -114,7 +111,6 @@
   color: #0a0f2c;
 }
 
-/* TEXT */
 .Action h2 {
   font-size: 16px;
   color: #e6f1ff;
@@ -128,12 +124,10 @@
   margin: 2px 0 0;
 }
 
-/* ACTIVE TEXT GLOW */
 .action-box.active h2 {
   color: #00ffaa;
 }
 
-/* BUTTON */
 .action-btn {
   margin-top: 12px;
   width: 100%;
@@ -150,7 +144,6 @@
   background: #00cc88;
 }
 
-/* ACTIVE BUTTON */
 .action-box.active .action-btn {
   padding: 10px;
   font-size: 14px;

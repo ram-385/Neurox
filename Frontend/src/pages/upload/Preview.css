@@ -23,7 +23,6 @@
   border-radius: 10px;
 }
 
-/* TABLE */
 .UPreview-box table {
   width: max-content;
   min-width: 100%;
@@ -32,7 +31,6 @@
   color: #eee;
 }
 
-/* CELLS */
 .UPreview-box th,
 .UPreview-box td {
   border: 1px solid rgba(255,255,255,0.15);
@@ -41,7 +39,6 @@
   white-space: nowrap;
 }
 
-/* HEADER STICKY */
 .UPreview-box th {
   background: rgba(0, 170, 255, 0.15);
   color: #00d4ff;
@@ -51,7 +48,6 @@
   z-index: 2;
 }
 
-/* SCROLLBAR */
 .table-wrapper::-webkit-scrollbar {
   width: 10px;
   height: 10px;

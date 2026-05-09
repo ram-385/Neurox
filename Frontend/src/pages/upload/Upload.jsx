@@ -100,7 +100,7 @@ function Upload() {
     }
 
     try {
-      // IMAGE ZIP
+      // Image Zip
       if (selected === "img") {
         if (!selectedFile.name.toLowerCase().endsWith(".zip")) {
           alert("Only ZIP file allowed for image dataset");
@@ -165,7 +165,7 @@ function Upload() {
         fileCount: 1,
       });
 
-      // CSV
+      // csv
       if (selected === "csv") {
         Papa.parse(selectedFile, {
           header: true,
@@ -182,7 +182,7 @@ function Upload() {
         });
       }
 
-      // EXCEL
+      // Excel
       if (selected === "excel") {
         const reader = new FileReader();
 
@@ -202,7 +202,7 @@ function Upload() {
         reader.readAsArrayBuffer(selectedFile);
       }
 
-      // JSON
+      // Json
       if (selected === "json") {
         const reader = new FileReader();
 
@@ -225,7 +225,7 @@ function Upload() {
         reader.readAsText(selectedFile);
       }
 
-      // XML
+      // Xml
       if (selected === "xml") {
         const reader = new FileReader();
 
@@ -249,7 +249,7 @@ function Upload() {
         reader.readAsText(selectedFile);
       }
 
-      // TEXT
+      // Text
       if (selected === "text") {
         const reader = new FileReader();
 
@@ -271,7 +271,7 @@ function Upload() {
   return (
     <div className="upload-page">
 
-      {/* DATASET CARDS */}
+      
       <div className="dataset-section">
         <h3>1. Select Dataset Type</h3>
         <p>Choose the format of your dataset file</p>
@@ -302,7 +302,7 @@ function Upload() {
         </div>
       </div>
 
-      {/* UPLOAD BOX */}
+     
       <div className="upload-section">
         
         <label className="upload-box">
@@ -322,7 +322,7 @@ function Upload() {
         </label>
       </div>
 
-      {/* FILE INFO */}
+      
       {fileInfo && (
         <div className="file-info-box">
           <h3>Dataset Details</h3>
@@ -333,10 +333,10 @@ function Upload() {
         </div>
       )}
 
-      {/* PREVIEW */}
+      
       <Preview Data={previewData} style={{width:'100%'}} />
 
-      {/* BUTTON */}
+      
       <div className="start-container">
         {previewData ? (
           <button className="start-btn" onClick={uploadToBackend}>

@@ -18,7 +18,6 @@
   overflow: hidden;
 }
 
-/* Plotly canvas control */
 .chart-container .js-plotly-plot {
   width: 100% !important;
 }

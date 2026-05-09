@@ -5,7 +5,7 @@
   color: white;
 }
 
-/* 🔥 TITLE WITH SIDE LINES (same as features) */
+
 .cta-title {
   position: relative;
   display: flex;
@@ -27,7 +27,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* lines */
+
 .cta-title::before,
 .cta-title::after {
   content: "";
@@ -50,7 +50,7 @@
 }
 
 
-/* BUTTON (unchanged) */
+
 .cta-btn {
   padding: 14px 28px;
   font-size: 16px;

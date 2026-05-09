@@ -48,7 +48,7 @@ function Selection({ columns, onPlot }) {
         value={col1}
         onChange={(e) => {
           setCol1(e.target.value);
-          setCol2(""); // reset second column
+          setCol2(""); 
         }}
       >
         <option value="">Select Column 1</option>

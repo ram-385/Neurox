@@ -7,7 +7,7 @@ function Hero() {
   return (
     <section className="hero-container">
 
-      {/* LEFT CONTENT */}
+     
       <div className="hero-left">
         <h1 className="hero-title">
           Build Intelligent <span>Systems</span>
@@ -25,7 +25,7 @@ function Hero() {
         </div>
       </div>
 
-      {/* RIGHT IMAGE */}
+     
       <div className="hero-right">
         <img src={heroImg} alt="AI Visual" />
       </div>

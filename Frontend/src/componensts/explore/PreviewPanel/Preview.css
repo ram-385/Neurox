@@ -1,11 +1,11 @@
 .preview-box {
   width: 100%;
   color: #00aaff;
-  /* max-height: 520px; */
+  
     min-height: 250px;
   border-radius: 16px;
 
-  /* premium glass effect */
+  
    background: linear-gradient(
     145deg,
     rgba(25, 36, 59, 0.92),

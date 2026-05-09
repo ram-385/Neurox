@@ -1,4 +1,3 @@
-
 .explore-layout {
   display: flex;
   height: 100vh;
@@ -8,14 +7,12 @@
  
 }
 
-/* LEFT PANEL */
 .left-panel {
   width: 15%;
   min-width: 200px;
   height: 95%;
 }
 
-/* CENTER PANEL (MAIN 65%) */
 .center-panel {
   width: 60%;
   display: flex;
@@ -27,7 +24,6 @@
  
 }
 
-/* RIGHT PANEL */
 .right-panel {
   width: 20%;
   height: 95%;

@@ -1,4 +1,4 @@
-/* MAIN Card */
+
 .Card {
   width: 260px;
   padding: 22px;
@@ -90,7 +90,7 @@
     rgba(0, 255, 200, 0.08)
   );
 
-  /* GLOW */
+  
   box-shadow: 0 0 15px rgba(0, 150, 255, 0.3);
 
   transition: all 0.3s ease;

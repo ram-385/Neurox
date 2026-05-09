@@ -57,7 +57,6 @@ function OperationPanel({ columns = [], onAnalyze }) {
       category,
     });
 
-    // assume backend returns result
     if (res) setResult(res);
   };
 
@@ -65,7 +64,6 @@ function OperationPanel({ columns = [], onAnalyze }) {
     <div className="operation-panel">
       <h2 className="operation-panel-title">Operation Panel</h2>
 
-      {/* Category */}
       <select
         className="operation-panel-select"
         value={category}
@@ -80,7 +78,6 @@ function OperationPanel({ columns = [], onAnalyze }) {
         <option value="view">View</option>
       </select>
 
-      {/* Columns */}
       {category !== "view" && (
         <select
           className="operation-panel-select"
@@ -96,7 +93,7 @@ function OperationPanel({ columns = [], onAnalyze }) {
         </select>
       )}
 
-      {/* Operation */}
+      
       <select
         className="operation-panel-select"
         value={operation}
@@ -118,12 +115,12 @@ function OperationPanel({ columns = [], onAnalyze }) {
         ))}
       </select>
 
-      {/* Button */}
+      
       <button className="operation-panel-button" onClick={handleApply}>
         Apply
       </button>
 
-      {/* What will happen */}
+      
      
         <div className="op-box">
           <h3>What will happen</h3>
@@ -131,7 +128,7 @@ function OperationPanel({ columns = [], onAnalyze }) {
         </div>
    
 
-      {/* Result Box */}
+      
      
         <div className="result-box">
           <h3>Result</h3>

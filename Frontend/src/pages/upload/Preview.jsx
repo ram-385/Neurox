@@ -8,7 +8,6 @@ function Preview({Data}) {
      <div className="UPreview-box">
            
 
-            {/* TABLE PREVIEW (FIXED WRAPPER ADDED) */}
             {Data?.type === "table" && (
                 <div className="table-wrapper">
                     <table>
@@ -33,7 +32,6 @@ function Preview({Data}) {
                 </div>
             )}
 
-            {/* IMAGE PREVIEW */}
             {Data?.type === "images" && (
                 <div className="image-grid">
                     {Data.data.map((img, i) => (
@@ -44,7 +42,6 @@ function Preview({Data}) {
                 </div>
             )}
 
-            {/* TEXT PREVIEW */}
             {Data?.type === "text" && (
                 <pre>{Data.data}</pre>
             )}

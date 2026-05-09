@@ -29,7 +29,7 @@ function Graph({ config, data }) {
       size: 18,
       color: "#e6f1ff"
     },
-    x: 0.5,   // center title
+    x: 0.5,   
     xanchor: "center"
   },
     autosize: true,
@@ -84,7 +84,7 @@ function Graph({ config, data }) {
 }
   switch (type) {
 
-    //Histogram with bins
+   
     case "Histogram":
       plotData = [{
         x: getColumn(x),
@@ -126,7 +126,7 @@ function Graph({ config, data }) {
       const min = Math.min(...sorted);
       const max = Math.max(...sorted);
 
-      // smoother resolution
+
       const points = 100;
       const xVals = Array.from({ length: points }, (_, i) =>
         min + (i * (max - min)) / (points - 1)
@@ -138,7 +138,7 @@ function Graph({ config, data }) {
 
       plotData = [
 
-        // histogram base
+        
         {
           x: values,
           type: "histogram",
@@ -155,7 +155,7 @@ function Graph({ config, data }) {
           }
         },
 
-        // KDE line
+       
         {
           x: xVals,
           y: yVals,

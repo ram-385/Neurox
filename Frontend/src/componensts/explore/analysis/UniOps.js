@@ -1,5 +1,3 @@
-// Univariate Graphical Operations Config
-
 export const numericalGraphOps = [
   { label: "Histogram", value: "histogram" },
   { label: "Box Plot", value: "boxplot" },

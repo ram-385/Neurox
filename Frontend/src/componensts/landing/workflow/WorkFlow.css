@@ -24,7 +24,6 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* LINES */
 .workflow-title::before,
 .workflow-title::after {
   content: "";

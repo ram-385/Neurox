@@ -10,7 +10,7 @@
   padding-top: 15px;
 }
 
-/* MAIN CONTAINER */
+
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -20,7 +20,7 @@
   gap: 30px;
 }
 
-/* LEFT */
+
 .footer-left h2 {
   font-size: 20px;
   margin-bottom: 10px;
@@ -37,7 +37,7 @@
   max-width: 250px;
 }
 
-/* LINKS */
+
 .flinks{
   width: 30%;
   display: flex;
@@ -67,7 +67,7 @@
   color: #00aaff;
 }
 
-/* SOCIAL */
+
 .social-container{
   display: flex;
   align-items: center;
@@ -91,7 +91,7 @@
   transform: scale(1.2);
 }
 
-/* BOTTOM */
+
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
@@ -102,7 +102,7 @@
   padding-top: 15px;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;

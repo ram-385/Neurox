@@ -1,4 +1,3 @@
-/* MAIN BOX */
 .btn-box {
   width: 200px;
   padding: 14px 18px;
@@ -9,7 +8,6 @@
 
   border-radius: 14px;
 
-  /* 🔥 DARK AI BACKGROUND */
   background: linear-gradient(
     135deg,
     rgba(10, 20, 40, 0.9),
@@ -26,7 +24,6 @@
   transition: all 0.3s ease;
 }
 
-/* HOVER */
 .btn-box:hover {
   transform: translateX(8px);
 
@@ -35,13 +32,11 @@
   box-shadow: 0 0 20px rgba(0, 150, 255, 0.4);
 }
 
-/* ARROW */
 .arrow {
   font-size: 18px;
   transition: transform 0.3s ease;
 }
 
-/* ARROW MOVE */
 .btn-box:hover .arrow {
   transform: translateX(6px);
 }

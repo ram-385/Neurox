@@ -24,7 +24,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* LINES */
+
 .features-title::before,
 .features-title::after {
   content: "";

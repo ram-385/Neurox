@@ -110,7 +110,7 @@
   transition: all 0.3s ease;
 }
 
-/* CARD GLOW */
+
 .nav-center .navbar-nav:hover {
   box-shadow:
     0 0 10px rgba(13, 110, 253, 0.2),
@@ -129,17 +129,14 @@
   transition: all 0.3s ease;
 }
 
-/* HOVER */
 .nav-link:hover {
   color: #0d6efd;
 }
 
-/* ACTIVE */
 .nav-link.active {
   color: #0d6efd;
 }
 
-/* UNDERLINE ANIMATION */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -174,7 +171,6 @@
   transition: all 0.3s ease;
 }
 
-/* LOGIN (ghost) */
 .nav-right .nav-item:first-child .nav-link:hover {
   background: rgba(255, 255, 255, 0.08);
 
@@ -182,14 +178,12 @@
     0 0 6px rgba(13, 110, 253, 0.2);
 }
 
-/* SIGNUP (primary modern button) */
 .nav-right .nav-item:last-child .nav-link {
   background: linear-gradient(135deg, #0d6efd, #3a8bfd);
   border: none;
   color: #fff;
 }
 
-/* SIGNUP HOVER */
 .nav-right .nav-item:last-child .nav-link:hover {
   transform: translateY(-1px);
 
@@ -198,14 +192,12 @@
     0 0 20px rgba(13, 110, 253, 0.25);
 }
 
-/* CLICK EFFECT */
 .nav-right .nav-link:active {
   transform: scale(0.96);
 }
 
 
 
-/* TABLET */
 @media (max-width: 992px) {
   .navbar-container {
     padding: 10px 16px;
@@ -216,7 +208,6 @@
   }
 }
 
-/* MOBILE */
 @media (max-width: 768px) {
   .navbar-container {
     flex-direction: column;
@@ -244,7 +235,6 @@
   }
 }
 
-/* SMALL MOBILE */
 @media (max-width: 480px) {
   .nav-link {
     font-size: 13px;

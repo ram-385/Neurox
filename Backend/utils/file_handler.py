@@ -11,7 +11,6 @@ def try_read_csv(file_bytes):
         try:
             df = pd.read_csv(io.StringIO(text), sep=sep)
 
-            #  valid CSV should have more than 1 column
             if df.shape[1] > 1:
                 return df
 

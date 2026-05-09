@@ -45,7 +45,6 @@ const ops = isNumerical(columnType)
         ))}
       </select>
 
-      {/* Operation */}
       <select
         value={operation}
         onChange={(e) => setOperation(e.target.value)}
@@ -60,7 +59,6 @@ const ops = isNumerical(columnType)
         ))}
       </select>
 </div>
-      {/* Button */}
       <button
         onClick={() => {
           if (!selectedColumn || !operation) {

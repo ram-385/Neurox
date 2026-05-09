@@ -14,7 +14,7 @@ function FeatureEngineering() {
    const [graphConfig, setGraphConfig] = useState(null);
   
 
-  // Load from local storage  (after upload)
+  
     useEffect(() => {
       const id = localStorage.getItem("dataset_id");
       const preview = localStorage.getItem("Data");
@@ -34,7 +34,6 @@ function FeatureEngineering() {
     }
     }, []);
 
-   // handle operations from column panel
   const handleAction = async (action, column) => {
   try {
     let url = "";
@@ -68,7 +67,6 @@ function FeatureEngineering() {
         data: result.data   
       });
      
-      // sync localStorage also
       localStorage.setItem("Data", JSON.stringify(result.data));
     }
 
@@ -110,18 +108,15 @@ const handleOperation = async (Payload) => {
 
     console.log("FE Result:", result);
 
-    // update data cahnges will reflect in the preview table
     if (result.data) {
       setData({
         type: "table",
         data: result.data
       });
 
-      // sync localStorage
       localStorage.setItem("Data", JSON.stringify(result.data));
     }
 
-    // Update COLUMNS (if changed)
     if (result.columns) {
       setColumns(result.columns);
 
@@ -138,13 +133,11 @@ const handleOperation = async (Payload) => {
   return (
     <div className='feature-engineering-container'>
 
-      {/*  Left Panel */}
       <ColumnPanel 
         columns={columns} 
         onAction={handleAction}  
       />
 
-      {/* Center */}
       <div className="center" >
         
          
@@ -173,7 +166,6 @@ const handleOperation = async (Payload) => {
 
       </div>
 
-      {/* Right Panel (Operations) */}
       <div className="right">
         <OperationPanel 
           columns={columns}

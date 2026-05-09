@@ -20,17 +20,17 @@
   
   flex-shrink: 0;
 
-  /* height control */
+  
   height: 90%;
   max-height: 90%;
 
-  /* overflow safe */
+  
   overflow-y: auto;
 
   border: 1px solid #222;
 }
 
-/* Title */
+
 .fselection-box h3 {
   color: #00ffaa;
   font-size: 16px;

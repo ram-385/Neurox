@@ -11,8 +11,6 @@ def get_dataset(dataset_id: str):
 
     if df is None:
         raise ValueError("Dataset not found")
-
-    # normalize column names
     df.columns = df.columns.str.strip()
     return df
 
