@@ -5,12 +5,14 @@ export const numericalOps = [
   { value: "min", label: "Min", desc: "Identifies the smallest value present in the column" },
   { value: "max", label: "Max", desc: "Identifies the largest value present in the column" },
   { value: "std", label: "Standard Deviation", desc: "Measures how much the values deviate from the mean (data spread)" },
+  {value: 'nullCount',label:'Null Count',desc:'counts number of missing values in the particular column of dataset'},
 ];
 
 export const categoricalOps = [
   { value: "valueCount", label: "Value Counts", desc: "Counts how many times each category appears in the column" },
   { value: "unique", label: "Unique Count", desc: "Returns the number of distinct (non-repeated) values" },
   { value: "mode", label: "Mode", desc: "Finds the category that appears most frequently" },
+  {value: 'nullCount',label:'Null Count',desc:'counts number of missing values in the particular column of dataset'}
 ];
 
 export const cleaningOps = [

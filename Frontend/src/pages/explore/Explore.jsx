@@ -41,7 +41,6 @@ function Explore() {
 
 const handlePlots =(config)=>{
   setAnalysisConfig(config);
-  
 }
 
 
@@ -254,6 +253,7 @@ const handlePlots =(config)=>{
 };
 
 const activeData = (view)?viewData:data
+console.log(stats)
  return (
   <div className="explore-container">
 
@@ -297,6 +297,7 @@ const activeData = (view)?viewData:data
 
          
           <div className="chart-container">
+          
             <Chart
               config={analysisConfig}
               data={data.data}
@@ -310,6 +311,7 @@ const activeData = (view)?viewData:data
       <div className="right-panel">
         <OperationPanel
           columns={columns}
+          Data = {data.data}
           onAnalyze={handleAnalyze}
         />
       </div>

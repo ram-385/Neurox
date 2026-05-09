@@ -8,7 +8,7 @@ import {
   viewOps,
 } from "./Ops.js";
 
-function OperationPanel({ columns = [], onAnalyze }) {
+function OperationPanel({ columns = [], Data = [], onAnalyze }) {
   const [selectedColumn, setSelectedColumn] = useState("");
   const [columnType, setColumnType] = useState("");
   const [operation, setOperation] = useState("");
@@ -16,6 +16,51 @@ function OperationPanel({ columns = [], onAnalyze }) {
 
   const [selectedOpObj, setSelectedOpObj] = useState(null);
   const [result, setResult] = useState(null);
+
+
+
+  const isHighCardinality = (columnName) => {
+    const cleanValues = Data
+      .map((row) => row[columnName])
+      .filter(
+        (v) =>
+          v !== null &&
+          v !== undefined &&
+          v !== ""
+      );
+
+    const uniqueValues = new Set(cleanValues);
+
+    return uniqueValues.size > 10;
+  };
+
+
+  const isNumerical = (type, columnName) => {
+    if (!type) return false;
+
+    const isNumericType =
+      type.includes("int") ||
+      type.includes("float") ||
+      type.includes("double");
+
+    if (!isNumericType) return false;
+
+    const cleanValues = Data
+      .map((row) => row[columnName])
+      .filter(
+        (v) =>
+          v !== null &&
+          v !== undefined &&
+          v !== ""
+      );
+
+    const uniqueValues = new Set(cleanValues);
+
+    const uniqueRatio =
+      uniqueValues.size / cleanValues.length;
+
+    return uniqueRatio > 0.05;
+  };
 
   const handleColumnChange = (e) => {
     const colName = e.target.value;
@@ -36,9 +81,15 @@ function OperationPanel({ columns = [], onAnalyze }) {
       case "view":
         return viewOps;
       default:
-        return columnType === "int64" || columnType === "float64"
-          ? numericalOps
-          : categoricalOps;
+        if (isNumerical(columnType, selectedColumn)) {
+          return numericalOps;
+        }
+
+        if (isHighCardinality(selectedColumn)) {
+          return [];
+        }
+
+        return categoricalOps;
     }
   };
 
@@ -57,7 +108,7 @@ function OperationPanel({ columns = [], onAnalyze }) {
       category,
     });
 
-    if (res) setResult(res);
+   setResult(res);
   };
 
   return (
@@ -93,7 +144,22 @@ function OperationPanel({ columns = [], onAnalyze }) {
         </select>
       )}
 
-      
+
+      {
+        !isNumerical(columnType, selectedColumn) &&
+        isHighCardinality(selectedColumn) && (
+          <p
+            style={{
+              color: "#ff4d4f",
+              fontSize: "14px",
+              marginTop: "8px"
+            }}
+          >
+            Too many categories for Analyis
+          </p>
+        )
+      }
+
       <select
         className="operation-panel-select"
         value={operation}
@@ -115,28 +181,28 @@ function OperationPanel({ columns = [], onAnalyze }) {
         ))}
       </select>
 
-      
+
       <button className="operation-panel-button" onClick={handleApply}>
         Apply
       </button>
 
-      
-     
-        <div className="op-box">
-          <h3>What will happen</h3>
-          {selectedOpObj &&  (  <p>{selectedOpObj.desc}</p> )}
-        </div>
-   
 
-      
-     
-        <div className="result-box">
-          <h3>Result</h3>
-           {result && (
+
+      <div className="op-box">
+        <h3>What will happen</h3>
+        {selectedOpObj && (<p>{selectedOpObj.desc}</p>)}
+      </div>
+
+
+
+
+      <div className="result-box">
+        <h3>Result</h3>
+        {result && (
           <pre>{JSON.stringify(result, null, 2)}</pre>
-            )}
-        </div>
-    
+        )}
+      </div>
+
     </div>
   );
 }

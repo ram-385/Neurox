@@ -17,11 +17,7 @@ function kernelDensity(x, data) {
       0
     ) / n;
 
-  const bandwidth =
-    1.06 *
-    Math.sqrt(variance) *
-    Math.pow(n, -1 / 5);
-
+  const bandwidth = 1.06 * Math.sqrt(variance) * Math.pow(n, -1 / 5);
   const sum = data.reduce((acc, xi) => {
 
     const u = (x - xi) / bandwidth;
@@ -464,18 +460,29 @@ function Chart({ config, data }) {
 
 
 
-  const isNumerical = (type) => {
+  const isNumerical = (type, values) => {
+  if (!type) return false;
 
-    if (!type) return false;
+  const t = type.toLowerCase();
 
-    const t = type.toLowerCase();
+  const isNumericType =
+    t.includes("int") ||
+    t.includes("float") ||
+    t.includes("double");
 
-    return (
-      t.includes("int") ||
-      t.includes("float") ||
-      t.includes("double")
-    );
-  };
+  if (!isNumericType) return false;
+
+  const uniqueValues = new Set(
+    values.filter(
+      (v) =>
+        v !== null &&
+        v !== undefined &&
+        v !== ""
+    )
+  );
+
+  return uniqueValues.size > 10;
+};
 
 
 
@@ -487,7 +494,7 @@ function Chart({ config, data }) {
       }}
     >
       {
-        isNumerical(type)
+        isNumerical(type, values)
           ? renderNumerical()
           : renderCategorical()
       }

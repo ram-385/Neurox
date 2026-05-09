@@ -240,6 +240,8 @@ async def column_stats(req: StatsRequest):
 
         elif req.operation == "valueCount":
             result = col.value_counts().to_dict()
+        elif req.operation == 'nullCount':
+             result = col.isnull().sum()
 
         else:
             return {"error": "Invalid operation"}
