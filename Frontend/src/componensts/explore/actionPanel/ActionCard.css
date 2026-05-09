@@ -1,4 +1,4 @@
-.action-box {
+.Eaction-box {
   background: #1d243d;
   padding: 14px;
   border-radius: 12px;
@@ -13,19 +13,19 @@
  
 }
 
-.action-box:hover {
+.Eaction-box:hover {
   transform: translateY(-5px);
   background: #16225a;
   border: 1px solid #00ffaa55;
 }
 
-.action-bar {
+.Eaction-bar {
   display: flex;
   gap: 12px;
   align-items: center;
 }
 
-.icon-squre {
+.Eicon-squre {
   background: #1f2a4a;
   padding: 10px;
   border-radius: 8px;
@@ -33,19 +33,19 @@
   color: #00ffaa;
 }
 
-.Action h2 {
+.EAction h2 {
   font-size: 16px;
   color: #e6f1ff;
   margin: 0;
 }
 
-.Action p {
+.EAction p {
   font-size: 12px;
   color: #aaa;
   margin: 2px 0 0;
 }
 
-.action-btn {
+.Eaction-btn {
   margin-top: 12px;
   width: 100%;
   background: #00ffaa;
@@ -57,13 +57,13 @@
   transition: 0.2s;
 }
 
-.action-btn:hover {
+.Eaction-btn:hover {
   background: #00cc88;
 }
 
 
 
-.action-box {
+.Eaction-box {
   background: #1d243d;
   padding: 14px;
   border-radius: 12px;
@@ -79,13 +79,13 @@
   justify-content: space-between;
 }
 
-.action-box:hover {
+.Eaction-box:hover {
   transform: translateY(-5px) scale(1.03);
   background: #16225a;
   border: 1px solid #00ffaa55;
 }
 
-.action-box.active {
+.Eaction-box.active {
   width: 240px;
   height: 140px;
 
@@ -97,7 +97,7 @@
   transform: scale(1.05);
 }
 
-.icon-squre {
+.Eicon-squre {
   background: #1f2a4a;
   padding: 10px;
   border-radius: 8px;
@@ -106,29 +106,29 @@
   transition: 0.3s;
 }
 
-.action-box.active .icon-squre {
+.Eaction-box.active .icon-squre {
   background: #00ffaa;
   color: #0a0f2c;
 }
 
-.Action h2 {
+.EAction h2 {
   font-size: 16px;
   color: #e6f1ff;
   margin: 0;
   transition: 0.3s;
 }
 
-.Action p {
+.EAction p {
   font-size: 12px;
   color: #aaa;
   margin: 2px 0 0;
 }
 
-.action-box.active h2 {
+.Eaction-box.active h2 {
   color: #00ffaa;
 }
 
-.action-btn {
+.Eaction-btn {
   margin-top: 12px;
   width: 100%;
   background: #00ffaa;
@@ -140,11 +140,11 @@
   transition: 0.2s;
 }
 
-.action-btn:hover {
+.Eaction-btn:hover {
   background: #00cc88;
 }
 
-.action-box.active .action-btn {
+.Eaction-box.active .action-btn {
   padding: 10px;
   font-size: 14px;
 }

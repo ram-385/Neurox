@@ -14,21 +14,21 @@ import iconMap from "./IconMap";
 function ActionCard({ action, onClick, isActive }) {
   return (
     <div
-      className={`action-box ${isActive ? "active" : ""}`}
+      className={`Eaction-box ${isActive ? "active" : ""}`}
       onClick={() => onClick(action.id)}
     >
-      <div className="action-bar">
+      <div className="Eaction-bar">
         <div className="icon-squre">
           <FontAwesomeIcon icon={iconMap[action.icon]} />
         </div>
 
-        <div className="Action">
+        <div className="EAction">
           <h2>{action.name}</h2>
           <p>{action.text}</p>
         </div>
       </div>
 
-      <button className="action-btn">
+      <button className="Eaction-btn">
         {action.btn_text}
       </button>
     </div>

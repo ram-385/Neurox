@@ -21,13 +21,6 @@ const actions = [
     icon: 'Group'
   },
   
-  {
-    id: "visualize",
-    name: "Visualize",
-    text: "Create charts",
-    btn_text: "Open",
-    icon: 'ChartBar'
-  }
 ];
 
 export default actions

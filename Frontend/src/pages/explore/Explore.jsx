@@ -258,7 +258,7 @@ const activeData = (view)?viewData:data
   <div className="explore-container">
 
    
-    <div className="action-panel">
+    <div className="top-panel">
       <ActionPanel 
         handleAction={handleActionPanel} 
         columns={columns}

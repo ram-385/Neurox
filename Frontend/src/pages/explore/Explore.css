@@ -6,7 +6,12 @@
   -webkit-background-clip: text;
  
 }
-
+.top-panel{
+   display: flex;
+   width: 100%;
+   align-items: center;
+   justify-content: center;
+}
 .left-panel {
   width: 15%;
   min-width: 200px;
@@ -46,6 +51,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .analysis-box {
   display: flex;
   gap: 20px;
